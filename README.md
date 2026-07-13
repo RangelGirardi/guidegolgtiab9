@@ -20,11 +20,6 @@ Manual técnico interativo do **Volkswagen Gol GTI 2.0 8V (carroceria AB9, 1995)
 - Layout responsivo (funciona no celular, ideal pra usar na oficina)
 - Arquivo único e offline — não depende de internet depois de carregado
 
-## Como publicar (GitHub Pages)
-
-1. Envie `index.html` e este `README.md` para o repositório
-2. Em **Settings → Pages**, selecione a branch principal e a pasta `/ (root)`
-3. O manual ficará disponível em `https://SEU-USUARIO.github.io/NOME-DO-REPO/`
 
 ## Apoie o projeto 💛
 
@@ -62,11 +57,6 @@ Interactive technical manual for the **Volkswagen Gol GTI 2.0 8V (AB9 body, 1995
 - Responsive layout (works on phones — ideal for garage use)
 - Single self-contained file — works offline once loaded
 
-## How to publish (GitHub Pages)
-
-1. Push `index.html` and this `README.md` to the repository
-2. In **Settings → Pages**, select the main branch and the `/ (root)` folder
-3. The manual will be available at `https://YOUR-USER.github.io/REPO-NAME/`
 
 ## Support the project 💛
 

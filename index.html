@@ -45,9 +45,6 @@
 </helmet>
 <div style="{{ rootStyle }}">
 
-<sc-if value="{{ notHome }}">
-  <button onClick="{{ goHome }}" title="Voltar ao índice do manual" style="{{ navDockStyle }}" style-hover="border-color:var(--red); color:var(--red);"><span style="font-size:20px; line-height:1; transform:translateY(-1px);">←</span></button>
-</sc-if>
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
   <div id="homeScroll" style="height:100%; overflow-y:auto; background:var(--paper);">
@@ -4713,7 +4710,7 @@ class Component extends DCLogic {
   openOv(id) { this.setState({ ovPop: id }); }
   closeOv() { this.setState({ ovPop: null }); }
 
-  componentWillUnmount() { if (this._timer) clearTimeout(this._timer); if (this._scrollT) clearTimeout(this._scrollT); if (this._onScroll) document.removeEventListener('scroll', this._onScroll, true); if (this._moT) clearTimeout(this._moT); if (this._rescueT) clearTimeout(this._rescueT); if (this._mo) this._mo.disconnect(); if (this._io) this._io.disconnect(); if (this._onRevealEnd) document.removeEventListener('animationend', this._onRevealEnd, true); }
+  componentWillUnmount() { if (this._timer) clearTimeout(this._timer); if (this._scrollT) clearTimeout(this._scrollT); if (this._onScroll) document.removeEventListener('scroll', this._onScroll, true); if (this._moT) clearTimeout(this._moT); if (this._rescueT) clearTimeout(this._rescueT); if (this._mo) this._mo.disconnect(); if (this._io) this._io.disconnect(); if (this._onRevealEnd) document.removeEventListener('animationend', this._onRevealEnd, true); if (this._onPop) window.removeEventListener('popstate', this._onPop); }
 
   emitCode(code) {
     this.stopLamp();
@@ -4783,6 +4780,19 @@ class Component extends DCLogic {
     };
     document.addEventListener('scroll', this._onScroll, true);
 
+    // Botão voltar do navegador
+    try {
+      setTimeout(() => { try { history.replaceState({ golgti: this.snapshotNav() }, ''); } catch (e) {} }, 50);
+      this._onPop = (e) => {
+        if (e.state && e.state.golgti) {
+          this._noPush = true;
+          try { localStorage.setItem('golgti_view', e.state.golgti.view); } catch (err) {}
+          this.setState(e.state.golgti, () => { this._noPush = false; });
+        }
+      };
+      window.addEventListener('popstate', this._onPop);
+    } catch (e) {}
+
     // Scroll-reveal: cards nascem conforme entram na tela
     try {
       document.documentElement.setAttribute('data-io', '1');
@@ -4849,6 +4859,9 @@ class Component extends DCLogic {
     }
     try { localStorage.setItem('golgti_view', view); } catch (e) {}
     this.setState({ view });
+    if (view !== cur) {
+      try { setTimeout(() => { if (!this._noPush) history.pushState({ golgti: this.snapshotNav() }, ''); }, 0); } catch (e) {}
+    }
   }
 
   goBack() {
@@ -5703,7 +5716,6 @@ class Component extends DCLogic {
       notHome: this.state.view !== 'home' && !!this.state.view,
       goBack: () => this.goBack(),
       hasPrev: !!(this._hist && this._hist.length),
-      navDockStyle: 'position:fixed; top:18px; left:18px; z-index:60; width:46px; height:46px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:999px; background:var(--panel); color:var(--ink); cursor:pointer; box-shadow:0 10px 30px rgba(0,0,0,.35); transition:transform .35s cubic-bezier(.2,.9,.3,1.2), opacity .3s, border-color .15s, color .15s;' + (this.state.uiScrolling ? ' transform:translateY(-4px) scale(.94); opacity:.6;' : ' transform:translateY(0) scale(1); opacity:1;'),
       isDark: (this.state.theme || this.props.theme || 'escuro') !== 'creme',
       isLight: (this.state.theme || this.props.theme || 'escuro') === 'creme',
       toggleTheme: () => this.toggleTheme(),

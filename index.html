@@ -56,6 +56,7 @@
    [data-home-hero]{ grid-template-columns:1fr !important; }
    [data-home-hero-img]{ min-height:220px !important; max-height:260px; order:2; }
    [data-freios-grid]{ grid-template-columns:1fr !important; }
+   [data-sapatas-figs]{ grid-template-columns:1fr !important; }
  }
 
 </style>
@@ -2341,6 +2342,25 @@
               </div>
             </sc-for>
           </div>
+        </div>
+      </div>
+
+      <div style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Serviço nas sapatas</div>
+        <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Remoção e <span style="color:var(--red);">montagem</span></h3>
+        <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr); gap:20px; align-items:start;">
+          <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Procedimento completo</div>
+            <div style="padding:8px 18px 14px;"><sc-for list="{{ freiosSapatasSteps }}" as="st" hint-placeholder-count="18"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:9px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:12.8px; line-height:1.48; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
+          </div>
+          <div data-sapatas-figs="true" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;">
+            <sc-for list="{{ freiosSapatasFigs }}" as="fig" hint-placeholder-count="6"><figure data-reveal="1" onClick="{{ fig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 8px 20px rgba(0,0,0,.1);" style-hover="border-color:var(--red);"><div style="padding:10px; display:flex; align-items:center; justify-content:center;"><img src="{{ fig.src }}" alt="{{ fig.label }}" loading="lazy" style="width:100%; height:auto; display:block;" /></div><figcaption style="font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px; border-top:1px solid var(--line); background:var(--panel);">{{ fig.label }}</figcaption></figure></sc-for>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:20px;">
+          <div style="border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); padding:18px 20px;"><div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;">Porca do cubo</div><div style="font-family:var(--cond); font-weight:800; font-size:30px; color:var(--red);">30 Nm</div><div style="font-family:var(--sans); font-size:12px; line-height:1.45; color:var(--ink); margin-top:5px;">Apertar girando a roda para assentar o rolamento.</div></div>
+          <div style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 20px;"><div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;">Parafusos da roda</div><div style="font-family:var(--cond); font-weight:800; font-size:30px; color:var(--red);">100 Nm</div></div>
+          <div style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 20px;"><div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;">Após a montagem</div><div style="font-family:var(--sans); font-size:12.5px; line-height:1.5; color:var(--ink);">Regular a folga do rolamento e o freio de estacionamento.</div></div>
         </div>
       </div>
 
@@ -5412,6 +5432,35 @@ class Component extends DCLogic {
         'Espelho do freio',
         'Tampão'
       ].map((t, i) => ({ n: String(i + 1), t })),
+      freiosSapatasSteps: [
+        'Remova a roda, a tampa de proteção do cubo, a cupilha, a trava dentada e a porca de fixação do cubo.',
+        'Retire o tambor com a arruela de apoio e a gaiola de roletes do rolamento externo.',
+        'Retire os pratos, as molas de pressão e os pinos de retenção.',
+        'Desencaixe a parte inferior das duas sapatas de seus alojamentos e retire a mola inferior de retorno.',
+        'Retire completamente as sapatas e desacople o cabo do freio de estacionamento de sua alavanca.',
+        'Prenda o conjunto das sapatas em uma morsa.',
+        'Retire a mola de tração da cunha.',
+        'Com um alicate, retire a mola superior externa de retorno.',
+        'Com uma chave de fenda, retire a mola superior interna de retorno juntamente com a haste de apoio.',
+        'Na montagem, instale primeiro a mola superior interna e engate sua outra extremidade na haste de apoio.',
+        'Com um alicate, posicione a haste de apoio em seu alojamento na sapata.',
+        'Recue manualmente a haste e introduza a cunha entre a haste e o batente da sapata. O ressalto da cunha deve ficar voltado para o espelho do freio.',
+        'Monte a sapata com a alavanca do freio de estacionamento na haste de apoio.',
+        'Instale a mola superior externa com um alicate e coloque a mola de tração da cunha. Retire as sapatas da morsa.',
+        'Acople o cabo do freio de estacionamento à alavanca e monte as sapatas no espelho do freio.',
+        'Instale os pinos de retenção, as molas de pressão e os pratos.',
+        'Afaste novamente a parte inferior das sapatas, instale a mola inferior de retorno e recoloque as sapatas nos alojamentos.',
+        'Monte o tambor, o rolamento externo, a arruela de apoio e a porca sextavada. Aperte a 30 Nm enquanto gira a roda para assentar o rolamento.',
+        'Monte a roda e aperte os parafusos a 100 Nm. Em seguida, regule a folga do rolamento e o freio de estacionamento.'
+      ].map((t, i) => ({ n: String(i + 1), t })),
+      freiosSapatasFigs: [
+        ['uploads/imgz/freios-sapatas-remover-mola-externa.png', 'Retirada da mola superior externa de retorno com alicate'],
+        ['uploads/imgz/freios-sapatas-remover-mola-interna.png', 'Retirada da mola superior interna e da haste de apoio com chave de fenda'],
+        ['uploads/imgz/freios-sapatas-posicionar-haste.png', 'Posicionamento da haste de apoio no alojamento da sapata'],
+        ['uploads/imgz/freios-sapatas-montar-mola-externa.png', 'Instalação da mola superior externa de retorno com alicate'],
+        ['uploads/imgz/freios-sapatas-inserir-cunha.png', 'Recuo da haste e instalação da cunha de ajuste'],
+        ['uploads/imgz/freios-sapatas-montar-alavanca.png', 'Montagem da sapata com a alavanca do freio de estacionamento']
+      ].map(x => ({ src: x[0], label: x[1], onOpen: () => this.setState({ lightbox: { src: x[0], label: x[1] } }) })),
       freiosDiscoSteps: [
         'Remova a roda e a pinça de freio.',
         'Reinstale os parafusos da roda para manter o disco corretamente assentado durante a medição.',

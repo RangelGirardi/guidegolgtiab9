@@ -2280,6 +2280,43 @@
     <div style="margin-top:48px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);">Fonte-base: manual de reparações argentino · tradução e organização para o Gol GTI AB9 1995</div>
     </div>
     </sc-if>
+
+    <sc-if value="{{ freiosTabDisco }}">
+    <div data-pageturn="1">
+      <div style="margin-bottom:22px;">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Freios dianteiros</div>
+        <h2 style="font-family:var(--cond); font-weight:800; font-size:30px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Disco de <span style="color:var(--red);">freio</span></h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-bottom:24px;">
+        <div style="border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); padding:20px 22px;">
+          <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:8px;">Espessura mínima após retífica</div>
+          <div style="font-family:var(--cond); font-weight:800; font-size:34px; line-height:1; color:var(--red);">10,8 mm</div>
+        </div>
+        <div style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:20px 22px;">
+          <div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:8px;">Desvio lateral máximo</div>
+          <div style="font-family:var(--cond); font-weight:800; font-size:34px; line-height:1; color:var(--red);">0,06 mm</div>
+        </div>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+        <div style="padding:16px 22px; border-bottom:1px solid var(--line);">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:5px;">Verificação</div>
+          <h3 style="font-family:var(--cond); font-weight:800; font-size:22px; line-height:.95; text-transform:uppercase; color:var(--ink); margin:0;">Medição do empenamento</h3>
+        </div>
+        <div style="padding:18px 24px;">
+          <sc-for list="{{ freiosDiscoSteps }}" as="st" hint-placeholder-count="4">
+            <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
+              <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:18px; text-align:right; padding-top:2px;">{{ st.n }}</span>
+              <span style="font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="margin-top:48px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);">Fonte-base: manual de reparações argentino · tradução e organização para o Gol GTI AB9 1995</div>
+    </div>
+    </sc-if>
   </div>
   </div>
 </sc-if>
@@ -3680,7 +3717,7 @@ const CATS = [
     { id: 'ignicao', name: 'Ignição (TFI)', desc: 'Unidade TFI, bobina, sensor Hall, distribuidor, testes de resistência, ponto de ignição e filtro de ar.', ready: true, view: 'ignicao' },
   ] },
   { id: 'freioscap', name: 'Freios', subs: [
-    { id: 'freios', name: 'Freios', desc: 'Pastilhas dianteiras: remoção, inspeção do desgaste e reinstalação, com limites e torques. Novas seções serão adicionadas em tabs.', ready: true, view: 'freios' },
+    { id: 'freios', name: 'Freios', desc: 'Pastilhas e discos dianteiros: remoção, desgaste, empenamento, retífica, limites e torques.', ready: true, view: 'freios' },
   ] },
   { id: 'suspensaocap', name: 'Suspensão', subs: [
     { id: 'suspDianteira', name: 'Suspensão dianteira', desc: 'Amortecedor, coluna, rolamento de roda, mola, bandeja, buchas, barra estabilizadora e semieixos.', ready: false },
@@ -5321,9 +5358,17 @@ class Component extends DCLogic {
       isAlternador: this.state.view === 'alternador',
       isFreios: this.state.view === 'freios',
       freiosTabs: [
-        { id: 'pastilhas', label: 'Pastilhas de freio' }
+        { id: 'pastilhas', label: 'Pastilhas de freio' },
+        { id: 'disco', label: 'Disco de freio' }
       ].map(t => ({ label: t.label, onClick: () => { this.setState({ freiosTab: t.id }); try { const sc = document.getElementById('freiosScroll'); if (sc) sc.scrollTop = 0; } catch (e) {} }, style: this.tabStyle((this.state.freiosTab || 'pastilhas') === t.id) })),
       freiosTabPastilhas: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
+      freiosTabDisco: this.state.freiosTab === 'disco',
+      freiosDiscoSteps: [
+        'Remova a roda e a pinça de freio.',
+        'Reinstale os parafusos da roda para manter o disco corretamente assentado durante a medição.',
+        'Verifique o desvio lateral do disco com um relógio comparador. O valor não deve superar 0,06 mm.',
+        'Se for necessário retificar o disco, respeite a espessura mínima final de 10,8 mm.'
+      ].map((t, i) => ({ n: String(i + 1), t })),
       freiosPastilhasSteps: [
         'Remova a roda, retire a presilha e solte os parafusos-guia.',
         'Retire a pinça de freio. Não a deixe suspensa pela mangueira e não dobre nem torça a mangueira.',

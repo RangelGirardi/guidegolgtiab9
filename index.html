@@ -2417,10 +2417,17 @@
         </div>
         <div style="margin-top:14px; padding:14px 18px; border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); font-family:var(--sans); font-size:12.8px; line-height:1.5; color:var(--ink);"><strong>Atenção:</strong> o pino deve entrar livremente. Não force nem desloque o pedal ou a haste para alinhar os furos.</div>
       </div>
+      <div data-section-end="true" aria-hidden="true"></div>
+    </div>
+    </sc-if>
 
-      <div style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+    <sc-if value="{{ freiosTabFreioMao }}">
+    <div data-pageturn="1">
+      <div style="margin-bottom:22px;">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Freio de estacionamento</div>
-        <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Alavanca e <span style="color:var(--red);">cabos</span></h3>
+        <h2 style="font-family:var(--cond); font-weight:800; font-size:30px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Freio de <span style="color:var(--red);">mão</span></h2>
+      </div>
+      <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Alavanca e <span style="color:var(--red);">cabos</span></h3>
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr); gap:20px; align-items:start;">
           <figure data-reveal="1" onClick="{{ freioEstacionamentoFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:16px; display:flex; align-items:center; justify-content:center;"><img src="{{ freioEstacionamentoFig.src }}" alt="{{ freioEstacionamentoFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
@@ -5570,12 +5577,14 @@ class Component extends DCLogic {
       freiosTabs: [
         { id: 'pastilhas', label: 'Freios dianteiros' },
         { id: 'traseiros', label: 'Freios traseiros' },
-        { id: 'pedal', label: 'Pedal de freio' }
+        { id: 'pedal', label: 'Pedal de freio' },
+        { id: 'freiodemao', label: 'Freio de mão' }
       ].map(t => ({ label: t.label, onClick: () => { this.setState({ freiosTab: t.id }); try { const sc = document.getElementById('freiosScroll'); if (sc) sc.scrollTop = 0; } catch (e) {} }, style: this.tabStyle((this.state.freiosTab || 'pastilhas') === t.id) })),
       freiosTabPastilhas: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
       freiosTabDisco: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
       freiosTabTraseiros: this.state.freiosTab === 'traseiros',
       freiosTabPedal: this.state.freiosTab === 'pedal',
+      freiosTabFreioMao: this.state.freiosTab === 'freiodemao',
       freiosPedalFig: { src: 'uploads/imgz/freios-pedal-pecas.png', label: 'Pedal de freio, suporte, haste do cilindro-mestre, travas, pino e buchas', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-pedal-pecas.png', label: 'Pedal de freio — peças do conjunto' } }) },
       freiosPedalParts: [
         'Trava do pedal',

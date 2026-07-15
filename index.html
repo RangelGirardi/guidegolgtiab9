@@ -57,42 +57,6 @@
    [data-home-hero-img]{ min-height:220px !important; max-height:260px; order:2; }
  }
 
- /* Visual 2.0 — linguagem de oficina técnica / blueprint AB9 */
- #homeScroll,
- [id$="Scroll"]{
-   background-color:var(--paper) !important;
-   background-image:linear-gradient(color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--ink) 4%,transparent) 1px,transparent 1px) !important;
-   background-size:28px 28px !important;
- }
- #homeScroll > div{ max-width:1240px !important; padding-top:32px !important; }
- [data-home-hero]{
-   position:relative; border-radius:2px !important; border:1px solid color-mix(in srgb,var(--ink) 35%,transparent) !important;
-   box-shadow:12px 12px 0 color-mix(in srgb,var(--red) 18%,transparent) !important;
- }
- [data-home-hero]::before{
-   content:"AB9 / EA827   ·   ARQUIVO TÉCNICO 1995"; position:absolute; z-index:3; top:0; left:0;
-   padding:7px 12px; background:var(--red); color:#fff; font:600 9px/1 var(--mono); letter-spacing:.16em;
- }
- [data-home-hero] h1{ font-size:clamp(46px,7vw,76px) !important; line-height:.82 !important; letter-spacing:-.025em !important; }
- [data-home-hero-img]{ position:relative; clip-path:polygon(8% 0,100% 0,100% 100%,0 100%) !important; }
- [data-home-hero-img]::after{ content:""; position:absolute; inset:0; box-shadow:inset 12px 0 0 color-mix(in srgb,var(--red) 70%,transparent); pointer-events:none; }
- #homeTabsBar{ position:sticky; top:0; z-index:20; margin-top:42px !important; padding:10px !important; border:1px solid var(--line) !important; background:color-mix(in srgb,var(--paper) 88%,transparent) !important; backdrop-filter:blur(14px); }
- #homeTabsBar button{ border-radius:2px !important; box-shadow:none !important; }
- [data-system-card]{
-   border-radius:2px !important; border-top-width:1px !important; border-left:4px solid var(--line) !important;
-   box-shadow:5px 5px 0 color-mix(in srgb,var(--ink) 8%,transparent) !important;
- }
- [data-system-card]:hover{ border-left-color:var(--red) !important; transform:translate(-2px,-2px) !important; box-shadow:9px 9px 0 color-mix(in srgb,var(--red) 14%,transparent) !important; }
- [data-guide-header]{ border-bottom:3px solid var(--red) !important; background:color-mix(in srgb,var(--paper) 94%,transparent) !important; backdrop-filter:blur(12px); }
- [data-guide-aside]{ background:color-mix(in srgb,var(--housing) 94%,transparent) !important; }
- [data-guide-main] figure,
- [data-guide-main] section{ border-radius:2px !important; }
- @media (max-width:760px){
-   #homeScroll > div{ padding:18px 14px 76px !important; }
-   [data-home-hero]{ box-shadow:6px 6px 0 color-mix(in srgb,var(--red) 18%,transparent) !important; }
-   [data-home-hero-img]{ clip-path:none !important; }
-   #homeTabsBar{ margin-inline:-4px !important; }
- }
 </style>
 </helmet>
 <div style="{{ rootStyle }}">
@@ -155,7 +119,7 @@
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(244px,1fr)); gap:14px; margin-top:15px;">
             <sc-for list="{{ cat.subs }}" as="sub" hint-placeholder-count="2">
-              <button data-system-card="true" data-reveal="1" onClick="{{ sub.onClick }}" style="{{ sub.cardStyle }}" style-hover="{{ sub.hoverStyle }}">
+              <button data-reveal="1" onClick="{{ sub.onClick }}" style="{{ sub.cardStyle }}" style-hover="{{ sub.hoverStyle }}">
                 <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
                   <span style="{{ sub.dotStyle }}"></span>
                   <span style="{{ sub.badgeStyle }}">{{ sub.badge }}</span>
@@ -5064,17 +5028,17 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const accent = '#ff5a36';
+    const accent = this.props.accent || '#c62a1b';
     const showCor = this.props.showCor != null ? this.props.showCor : false;
     const showDiagram = this.props.showDiagram != null ? this.props.showDiagram : true;
     const dark = (this.state.theme || this.props.theme || 'escuro') !== 'creme';
 
     const pal = dark ? {
-      paper: '#111820', panel: '#18232d', ink: '#edf3f5', faint: '#90a4af',
-      line: 'rgba(170,205,218,.19)', housing: '#0a1118', mustard: '#ffc857',
+      paper: '#31353a', panel: '#3a3f46', ink: '#ece6d8', faint: '#98a0a9',
+      line: 'rgba(255,255,255,.15)', housing: '#1f2226', mustard: '#d6a13a',
     } : {
-      paper: '#e8edf0', panel: '#f8faf9', ink: '#15222b', faint: '#5e7079',
-      line: 'rgba(21,34,43,.18)', housing: '#17232b', mustard: '#d99816',
+      paper: '#e9e0cf', panel: '#f4eee0', ink: '#221e18', faint: '#736a59',
+      line: 'rgba(34,30,24,.16)', housing: '#26221c', mustard: '#cf9024',
     };
 
     const rootStyle = {

@@ -2323,7 +2323,7 @@
     <div data-pageturn="1">
       <div style="margin-bottom:22px;">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Freios traseiros</div>
-        <h2 style="font-family:var(--cond); font-weight:800; font-size:30px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Vista explodida do <span style="color:var(--red);">freio a tambor</span></h2>
+        <h2 style="font-family:var(--cond); font-weight:800; font-size:30px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Peças do conjunto do <span style="color:var(--red);">freio a tambor</span></h2>
       </div>
 
       <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:20px; align-items:start;">
@@ -5415,7 +5415,7 @@ class Component extends DCLogic {
       freiosTabPastilhas: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
       freiosTabDisco: this.state.freiosTab === 'disco',
       freiosTabTraseiros: this.state.freiosTab === 'traseiros',
-      freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Vista explodida dos componentes do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — vista explodida dos componentes 1 a 14' } }) },
+      freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Peças do conjunto do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — peças do conjunto, itens 1 a 14' } }) },
       freiosTraseirosParts: [
         'Prato da mola',
         'Mola de pressão',
@@ -5489,7 +5489,7 @@ class Component extends DCLogic {
       altTabUpgrade: this.state.altTab === 'upgrade',
       altK90DianteiraFig: { src: 'uploads/imgz/alternador-k90-dianteira-ferramentas.jpg', label: 'Desmontagem da parte dianteira do K1 90 A — ferramentas VW, porca da polia (40 Nm, mordentes de alumínio), remoção do rotor (VW 402a) e do rolamento (VW 607 + VW 723/9 + VW 401 na base CP-10); na instalação, a face blindada do rolamento voltada pro rotor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k90-dianteira-ferramentas.jpg', label: 'Parte dianteira do K1 90 A — ferramentas VW e porca da polia (40 Nm)' } }) },
       altK90TrasFig: { src: 'uploads/imgz/alternador-k90-traseira-explodido.jpg', label: 'Desmontagem da parte traseira do K1 90 A — estator, placa de diodos (retificadora) e tampa traseira', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k90-traseira-explodido.jpg', label: 'Parte traseira do K1 90 A — estator, placa de diodos e tampa' } }) },
-      altK90Fig: { src: 'uploads/imgz/alternador-k90-explodido.jpg', label: 'Bosch K1 90 A explodido — suporte das escovas (incluindo as escovas, com o regulador de tensão), carcaça com estator, rotor e tampa dianteira com a polia', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k90-explodido.jpg', label: 'Bosch K1 90 A — suporte das escovas, carcaça, rotor e tampa' } }) },
+      altK90Fig: { src: 'uploads/imgz/alternador-k90-explodido.jpg', label: 'Bosch K1 90 A desmontado — suporte das escovas (incluindo as escovas, com o regulador de tensão), carcaça com estator, rotor e tampa dianteira com a polia', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k90-explodido.jpg', label: 'Bosch K1 90 A — suporte das escovas, carcaça, rotor e tampa' } }) },
       alt120Fig: { src: 'uploads/imgz/alternador-bosch-120a.jpg', label: 'Alternador Bosch 120 A — código 1986A00857, usado nos tratores John Deere', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-bosch-120a.jpg', label: 'Bosch 120 A · 1986A00857 — troca-se a polia pela do alternador original' } }) },
       altK1DianteiraFig: { src: 'uploads/imgz/alternador-k1-dianteira-ferramentas.jpg', label: 'Desmontagem da parte dianteira do K1 — ferramentas especiais VW, porca da polia (40 Nm, mordentes de alumínio), extração do rotor (VW 402a) e do rolamento (VW 607 + VW 723/9 + VW 401)', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k1-dianteira-ferramentas.jpg', label: 'Parte dianteira do K1 — ferramentas especiais VW e torque da porca da polia (40 Nm)' } }) },
       altK1Ferramentas: [
@@ -5501,7 +5501,7 @@ class Component extends DCLogic {
         { k: 'Anel intermediário', v: 'A saliência do anel deve ficar voltada pro rolamento' },
       ],
       altK1TrasFig: { src: 'uploads/imgz/alternador-k1-traseira-explodido.jpg', label: 'Desmontagem da parte traseira do K1 65 A — estator, placa de bobina (retificadora) e tampa traseira', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k1-traseira-explodido.jpg', label: 'Parte traseira do K1 65 A — estator, placa de bobina e tampa' } }) },
-      altK1Fig: { src: 'uploads/imgz/alternador-k1-explodido.jpg', label: 'Alternador Bosch K1 65 A explodido — porta-escovas (com as escovas), carcaça com estator, rotor e tampa dianteira com polia', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k1-explodido.jpg', label: 'Bosch K1 65 A — porta-escovas, carcaça, rotor e tampa' } }) },
+      altK1Fig: { src: 'uploads/imgz/alternador-k1-explodido.jpg', label: 'Alternador Bosch K1 65 A desmontado — porta-escovas (com as escovas), carcaça com estator, rotor e tampa dianteira com polia', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-k1-explodido.jpg', label: 'Bosch K1 65 A — porta-escovas, carcaça, rotor e tampa' } }) },
       altFixFig: { src: 'uploads/imgz/alternador-fixacao-torques.jpg', label: 'Fixação do alternador — parafusos 1, 2 e 3 (35 Nm cada) e tensionamento da correia com a régua', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/alternador-fixacao-torques.jpg', label: 'Fixação do alternador — parafusos 1, 2 e 3 (35 Nm) e régua de tensionamento' } }) },
       altTorques: [
         { k: '35 Nm', v: 'Parafuso 1 — fixação do alternador ao suporte' },

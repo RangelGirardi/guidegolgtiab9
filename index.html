@@ -5440,12 +5440,12 @@ class Component extends DCLogic {
         'Retire completamente as sapatas e desacople o cabo do freio de estacionamento de sua alavanca.',
         'Prenda o conjunto das sapatas em uma morsa.',
         'Retire a mola de tração da cunha.',
-        'Com um alicate, retire a mola superior externa de retorno.',
-        'Com uma chave de fenda, retire a mola superior interna de retorno juntamente com a haste de apoio.',
-        'Na montagem, instale primeiro a mola superior interna e engate sua outra extremidade na haste de apoio.',
-        'Com um alicate, posicione a haste de apoio em seu alojamento na sapata.',
-        'Recue manualmente a haste e introduza a cunha entre a haste e o batente da sapata. O ressalto da cunha deve ficar voltado para o espelho do freio.',
-        'Monte a sapata com a alavanca do freio de estacionamento na haste de apoio.',
+        'Com um alicate, retire a mola superior externa de retorno — veja a Figura VI.3.',
+        'Com uma chave de fenda, retire a mola superior interna de retorno juntamente com a haste de apoio — veja a Figura VI.4.',
+        'Na montagem, instale primeiro a mola superior interna e engate sua outra extremidade na haste de apoio — veja a Figura VI.5.',
+        'Com um alicate, posicione a haste de apoio em seu alojamento na sapata — veja a Figura VI.6.',
+        'Recue manualmente a haste e introduza a cunha entre a haste e o batente da sapata. O ressalto da cunha deve ficar voltado para o espelho do freio — veja a Figura VI.7.',
+        'Monte a sapata com a alavanca do freio de estacionamento na haste de apoio — veja a Figura VI.8.',
         'Instale a mola superior externa com um alicate e coloque a mola de tração da cunha. Retire as sapatas da morsa.',
         'Acople o cabo do freio de estacionamento à alavanca e monte as sapatas no espelho do freio.',
         'Instale os pinos de retenção, as molas de pressão e os pratos.',
@@ -5454,12 +5454,12 @@ class Component extends DCLogic {
         'Monte a roda e aperte os parafusos a 100 Nm. Em seguida, regule a folga do rolamento e o freio de estacionamento.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       freiosSapatasFigs: [
-        ['uploads/imgz/freios-sapatas-remover-mola-externa.png', 'Retirada da mola superior externa de retorno com alicate'],
-        ['uploads/imgz/freios-sapatas-remover-mola-interna.png', 'Retirada da mola superior interna e da haste de apoio com chave de fenda'],
-        ['uploads/imgz/freios-sapatas-posicionar-haste.png', 'Posicionamento da haste de apoio no alojamento da sapata'],
-        ['uploads/imgz/freios-sapatas-montar-mola-externa.png', 'Instalação da mola superior externa de retorno com alicate'],
-        ['uploads/imgz/freios-sapatas-inserir-cunha.png', 'Recuo da haste e instalação da cunha de ajuste'],
-        ['uploads/imgz/freios-sapatas-montar-alavanca.png', 'Montagem da sapata com a alavanca do freio de estacionamento']
+        ['uploads/imgz/freios-sapatas-remover-mola-externa.png', 'Figura VI.3 — retirada da mola superior externa de retorno com alicate'],
+        ['uploads/imgz/freios-sapatas-remover-mola-interna.png', 'Figura VI.4 — retirada da mola superior interna e da haste de apoio com chave de fenda'],
+        ['uploads/imgz/freios-sapatas-posicionar-haste.png', 'Figura VI.5 — instalação da mola superior interna e encaixe na haste de apoio'],
+        ['uploads/imgz/freios-sapatas-montar-mola-externa.png', 'Figura VI.6 — posicionamento da haste de apoio no alojamento da sapata com alicate'],
+        ['uploads/imgz/freios-sapatas-inserir-cunha.png', 'Figura VI.7 — recuo da haste e instalação da cunha de ajuste'],
+        ['uploads/imgz/freios-sapatas-montar-alavanca.png', 'Figura VI.8 — montagem da sapata com a alavanca do freio de estacionamento']
       ].map(x => ({ src: x[0], label: x[1], onOpen: () => this.setState({ lightbox: { src: x[0], label: x[1] } }) })),
       freiosDiscoSteps: [
         'Remova a roda e a pinça de freio.',

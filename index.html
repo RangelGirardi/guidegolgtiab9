@@ -2380,6 +2380,21 @@
         </figure>
       </div>
 
+      <div style="margin-top:42px; border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+        <div style="padding:16px 20px; border-bottom:1px solid var(--line);">
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:6px;">Tambor de freio</div>
+          <h3 style="font-family:var(--cond); font-weight:800; font-size:24px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Medidas para <span style="color:var(--red);">retífica</span></h3>
+        </div>
+        <div style="padding:8px 20px 14px;">
+          <sc-for list="{{ freiosTamborMedidas }}" as="r" hint-placeholder-count="6">
+            <div style="display:flex; justify-content:space-between; gap:18px; align-items:baseline; padding:11px 0; border-bottom:1px solid var(--line);">
+              <span style="font-family:var(--sans); font-size:13px; color:var(--ink);">{{ r.k }}</span>
+              <strong style="font-family:var(--cond); font-size:18px; color:var(--red); white-space:nowrap;">{{ r.v }}</strong>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
       <div style="margin-top:48px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);">Fonte-base: manual de reparações argentino · tradução e organização para o Gol GTI AB9 1995</div>
     </div>
     </sc-if>
@@ -5485,6 +5500,14 @@ class Component extends DCLogic {
         'Faça um chanfro de 5 mm nas duas extremidades da lona e arredonde as arestas longitudinais — veja a figura.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       freiosLonasFig: { src: 'uploads/imgz/freios-lonas-chanfro-5mm.png', label: 'Chanfro de 5 mm na extremidade da lona de freio', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-lonas-chanfro-5mm.png', label: 'Lona de freio — chanfro de 5 mm nas extremidades' } }) },
+      freiosTamborMedidas: [
+        { k: 'Diâmetro do tambor novo', v: '180,00 mm' },
+        { k: 'Conicidade máxima', v: '0,10 mm' },
+        { k: 'Ovalização máxima', v: '0,15 mm' },
+        { k: 'Desvio lateral máximo', v: '0,20 mm' },
+        { k: 'Excentricidade máxima', v: '0,05 mm' },
+        { k: 'Limite de desgaste', v: '181,00 mm' }
+      ],
       freiosDiscoSteps: [
         'Remova a roda e a pinça de freio.',
         'Reinstale os parafusos da roda para manter o disco corretamente assentado durante a medição.',

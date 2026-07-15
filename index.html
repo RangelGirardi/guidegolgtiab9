@@ -54,6 +54,41 @@
    border-top:1px solid var(--line) !important;
  }
  [data-section-end]{ margin-top:48px; padding-bottom:28px; border-top:1px solid var(--line); }
+ /* Padrão único dos procedimentos: o mesmo passo a passo usado na Embreagem. */
+ sc-for[data-procedure="true"] > div{
+   display:flex !important;
+   grid-template-columns:none !important;
+   gap:16px !important;
+   align-items:flex-start !important;
+   padding:15px 22px !important;
+   border-top:1px solid var(--line) !important;
+   border-bottom:0 !important;
+ }
+ sc-for[data-procedure="true"] > div > span:first-child{
+   display:inline-flex !important;
+   align-items:center !important;
+   justify-content:center !important;
+   flex:0 0 auto !important;
+   width:26px !important;
+   height:26px !important;
+   padding:0 !important;
+   border-radius:999px !important;
+   background:var(--red) !important;
+   color:#fff !important;
+   font-family:var(--cond) !important;
+   font-size:13px !important;
+   font-weight:800 !important;
+   line-height:1 !important;
+   text-align:center !important;
+ }
+ sc-for[data-procedure="true"] > div > span:nth-child(2){
+   min-width:0;
+   padding-top:2px !important;
+   font-family:var(--sans) !important;
+   font-size:13.5px !important;
+   line-height:1.6 !important;
+   color:var(--ink) !important;
+ }
  @keyframes lbFade{ from{ opacity:0 } to{ opacity:1 } }
  @keyframes lbPop{ from{ opacity:0; transform:scale(.86) translateY(14px) } to{ opacity:1; transform:none } }
  @keyframes lbCap{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
@@ -84,6 +119,7 @@
    [data-freios-grid]{ grid-template-columns:1fr !important; }
    [data-sapatas-figs]{ grid-template-columns:1fr !important; }
    [data-section-end]{ margin-top:36px; padding-bottom:20px; }
+   sc-for[data-procedure="true"] > div{ gap:13px !important; padding:13px 16px !important; }
  }
 
 </style>
@@ -596,7 +632,7 @@
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:22px 24px;">
         <div style="font-family:var(--cond); font-weight:800; font-size:20px; text-transform:uppercase; color:var(--ink); margin-bottom:4px;">Teste estático</div>
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--red); margin-bottom:16px;">Motor desligado · KOEO</div>
-        <sc-for list="{{ ecuStaticSteps }}" as="st" hint-placeholder-count="9">
+        <sc-for data-procedure="true" list="{{ ecuStaticSteps }}" as="st" hint-placeholder-count="9">
           <div style="display:flex; gap:12px; margin-bottom:12px;">
             <span style="flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--paper); border:1px solid var(--line); font-family:var(--mono); font-size:11px; color:var(--red); display:flex; align-items:center; justify-content:center;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13px; line-height:1.5; color:var(--ink);">{{ st.t }}</span>
@@ -606,7 +642,7 @@
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:22px 24px;">
         <div style="font-family:var(--cond); font-weight:800; font-size:20px; text-transform:uppercase; color:var(--ink); margin-bottom:4px;">Teste dinâmico</div>
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--red); margin-bottom:16px;">Motor funcionando · KOER</div>
-        <sc-for list="{{ ecuDynSteps }}" as="st" hint-placeholder-count="7">
+        <sc-for data-procedure="true" list="{{ ecuDynSteps }}" as="st" hint-placeholder-count="7">
           <div style="display:flex; gap:12px; margin-bottom:12px;">
             <span style="flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--paper); border:1px solid var(--line); font-family:var(--mono); font-size:11px; color:var(--red); display:flex; align-items:center; justify-content:center;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13px; line-height:1.5; color:var(--ink);">{{ st.t }}</span>
@@ -725,7 +761,7 @@
         <div style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:24px; align-items:start;">
           <div>
             <div style="font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:14px;">Como instalar e ligar</div>
-            <sc-for list="{{ qhSteps }}" as="st" hint-placeholder-count="6">
+            <sc-for data-procedure="true" list="{{ qhSteps }}" as="st" hint-placeholder-count="6">
               <div style="display:flex; gap:12px; margin-bottom:13px;">
                 <span style="flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--paper); border:1px solid var(--line); font-family:var(--mono); font-size:11px; color:var(--red); display:flex; align-items:center; justify-content:center;">{{ st.n }}</span>
                 <span style="font-family:var(--sans); font-size:13px; line-height:1.5; color:var(--ink);">{{ st.t }}</span>
@@ -788,7 +824,7 @@
     <div style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:24px; align-items:start; margin-bottom:20px;">
       <div>
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:14px;">Como usar</div>
-        <sc-for list="{{ omSteps }}" as="st" hint-placeholder-count="5">
+        <sc-for data-procedure="true" list="{{ omSteps }}" as="st" hint-placeholder-count="5">
           <div style="display:flex; gap:12px; margin-bottom:13px;">
             <span style="flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:var(--panel); border:1px solid var(--line); font-family:var(--mono); font-size:11px; color:var(--red); display:flex; align-items:center; justify-content:center;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13px; line-height:1.5; color:var(--ink);">{{ st.t }}</span>
@@ -845,7 +881,7 @@
       </div>
       <div style="display:grid; grid-template-columns:1.15fr 1fr; gap:0;">
         <div style="padding:22px 26px;">
-          <sc-for list="{{ airGuideSteps }}" as="st" hint-placeholder-count="5">
+          <sc-for data-procedure="true" list="{{ airGuideSteps }}" as="st" hint-placeholder-count="5">
             <div style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
               <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:16px; text-align:right; padding-top:1px;">{{ st.n }}</span>
               <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -1334,7 +1370,7 @@
             <span style="flex:1 1 auto; height:1px; background:var(--ink); opacity:.12;"></span>
             <span style="font-family:var(--mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); flex:0 0 auto;">{{ g.fig }}</span>
           </div>
-          <sc-for list="{{ g.steps }}" as="st" hint-placeholder-count="4">
+          <sc-for data-procedure="true" list="{{ g.steps }}" as="st" hint-placeholder-count="4">
             <div style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
               <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:16px; text-align:right; padding-top:1px;">{{ st.n }}</span>
               <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -1664,7 +1700,7 @@
     <div style="margin-top:26px; border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:22px 24px;">
       <div style="font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:14px;">Remoção da alavanca — passo a passo</div>
       <div style="display:flex; flex-direction:column;">
-        <sc-for list="{{ alavancaSteps }}" as="s" hint-placeholder-count="6">
+        <sc-for data-procedure="true" list="{{ alavancaSteps }}" as="s" hint-placeholder-count="6">
           <div style="display:flex; gap:14px; padding:11px 0; border-top:1px solid var(--line); align-items:flex-start;">
             <span style="font-family:var(--cond); font-weight:800; font-size:15px; color:var(--red); flex:0 0 auto; width:22px; text-align:center; line-height:1.4;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ s.t }}</span>
@@ -1724,7 +1760,7 @@
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:20px 22px;">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red); margin-bottom:12px;">Passo a passo</div>
         <div style="display:flex; flex-direction:column;">
-          <sc-for list="{{ remocaoSteps }}" as="s" hint-placeholder-count="8">
+          <sc-for data-procedure="true" list="{{ remocaoSteps }}" as="s" hint-placeholder-count="8">
             <div style="display:flex; gap:14px; padding:11px 0; border-top:1px solid var(--line); align-items:flex-start;">
               <span style="font-family:var(--cond); font-weight:800; font-size:15px; color:var(--red); flex:0 0 auto; width:22px; text-align:center; line-height:1.4;">{{ s.n }}</span>
               <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ s.t }}</span>
@@ -1833,7 +1869,7 @@
 
     <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
       <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Extração — passo a passo</div>
-      <sc-for list="{{ seletoraSteps }}" as="s" hint-placeholder-count="6">
+      <sc-for data-procedure="true" list="{{ seletoraSteps }}" as="s" hint-placeholder-count="6">
         <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
           <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
           <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -1870,7 +1906,7 @@
 
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ carcacaSteps }}" as="s" hint-placeholder-count="5">
+        <sc-for data-procedure="true" list="{{ carcacaSteps }}" as="s" hint-placeholder-count="5">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -1918,7 +1954,7 @@
       <div style="display:flex; flex-direction:column; gap:18px;">
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ eixosSteps }}" as="s" hint-placeholder-count="4">
+        <sc-for data-procedure="true" list="{{ eixosSteps }}" as="s" hint-placeholder-count="4">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -1988,7 +2024,7 @@
 
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ montagemSteps }}" as="s" hint-placeholder-count="9">
+        <sc-for data-procedure="true" list="{{ montagemSteps }}" as="s" hint-placeholder-count="9">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -2046,7 +2082,7 @@
 
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ monteixoSteps }}" as="s" hint-placeholder-count="3">
+        <sc-for data-procedure="true" list="{{ monteixoSteps }}" as="s" hint-placeholder-count="3">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -2093,7 +2129,7 @@
 
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ montpinhaoSteps }}" as="s" hint-placeholder-count="6">
+        <sc-for data-procedure="true" list="{{ montpinhaoSteps }}" as="s" hint-placeholder-count="6">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -2135,7 +2171,7 @@
 
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Desmontagem</div>
-        <sc-for list="{{ coroapinhaoSteps }}" as="s" hint-placeholder-count="3">
+        <sc-for data-procedure="true" list="{{ coroapinhaoSteps }}" as="s" hint-placeholder-count="3">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -2218,7 +2254,7 @@
         <h3 style="font-family:var(--cond); font-weight:800; font-size:22px; line-height:.95; text-transform:uppercase; color:var(--ink); margin:0;">Remoção e montagem</h3>
       </div>
       <div style="padding:18px 24px;">
-        <sc-for list="{{ coletorSteps }}" as="st" hint-placeholder-count="6">
+        <sc-for data-procedure="true" list="{{ coletorSteps }}" as="st" hint-placeholder-count="6">
           <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
             <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:18px; text-align:right; padding-top:2px;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -2296,7 +2332,7 @@
         <h2 style="font-family:var(--cond); font-weight:800; font-size:24px; line-height:.95; text-transform:uppercase; color:var(--ink); margin:0;">Remoção e reinstalação</h2>
       </div>
       <div style="padding:18px 24px;">
-        <sc-for list="{{ freiosPastilhasSteps }}" as="st" hint-placeholder-count="6">
+        <sc-for data-procedure="true" list="{{ freiosPastilhasSteps }}" as="st" hint-placeholder-count="6">
           <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
             <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:18px; text-align:right; padding-top:2px;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -2333,7 +2369,7 @@
           <h3 style="font-family:var(--cond); font-weight:800; font-size:22px; line-height:.95; text-transform:uppercase; color:var(--ink); margin:0;">Medição do empenamento</h3>
         </div>
         <div style="padding:18px 24px;">
-          <sc-for list="{{ freiosDiscoSteps }}" as="st" hint-placeholder-count="4">
+          <sc-for data-procedure="true" list="{{ freiosDiscoSteps }}" as="st" hint-placeholder-count="4">
             <div style="display:flex; gap:14px; padding:10px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
               <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:18px; text-align:right; padding-top:2px;">{{ st.n }}</span>
               <span style="font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -2369,9 +2405,9 @@
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Cilindro-mestre</div>
         <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Regulagem da <span style="color:var(--red);">haste de acionamento</span></h3>
         <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
-          <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Procedimento</div>
+          <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
           <div style="padding:8px 20px 14px;">
-            <sc-for list="{{ freiosCilindroSteps }}" as="st" hint-placeholder-count="5">
+            <sc-for data-procedure="true" list="{{ freiosCilindroSteps }}" as="st" hint-placeholder-count="5">
               <div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);">
                 <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span>
                 <span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span>
@@ -2397,8 +2433,8 @@
         </div>
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(240px,.65fr); gap:20px; align-items:start; margin-top:20px;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
-            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Início da remoção</div>
-            <div style="padding:18px 20px;"><sc-for list="{{ freioEstacionamentoSteps }}" as="st" hint-placeholder-count="2"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
+            <div style="padding:18px 20px;"><sc-for data-procedure="true" list="{{ freioEstacionamentoSteps }}" as="st" hint-placeholder-count="2"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
           </div>
           <figure data-reveal="1" onClick="{{ freioEstacionamentoEqualizadorFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ freioEstacionamentoEqualizadorFig.src }}" alt="{{ freioEstacionamentoEqualizadorFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
@@ -2441,8 +2477,8 @@
         <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Remoção e <span style="color:var(--red);">montagem</span></h3>
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr); gap:20px; align-items:start;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
-            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Procedimento completo</div>
-            <div style="padding:8px 18px 14px;"><sc-for list="{{ freiosSapatasSteps }}" as="st" hint-placeholder-count="18"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:9px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:12.8px; line-height:1.48; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
+            <div style="padding:8px 18px 14px;"><sc-for data-procedure="true" list="{{ freiosSapatasSteps }}" as="st" hint-placeholder-count="18"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:9px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:12.8px; line-height:1.48; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
           </div>
           <div data-sapatas-figs="true" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;">
             <sc-for list="{{ freiosSapatasFigs }}" as="fig" hint-placeholder-count="6"><figure data-reveal="1" onClick="{{ fig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 8px 20px rgba(0,0,0,.1);" style-hover="border-color:var(--red);"><div style="padding:10px; display:flex; align-items:center; justify-content:center;"><img src="{{ fig.src }}" alt="{{ fig.label }}" loading="lazy" style="width:100%; height:auto; display:block;" /></div><figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px; border-top:1px solid var(--line); background:var(--panel);"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">{{ fig.n }}</span><span style="min-width:0;">{{ fig.label }}</span></figcaption></figure></sc-for>
@@ -2462,7 +2498,7 @@
             <h3 style="font-family:var(--cond); font-weight:800; font-size:24px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Troca e <span style="color:var(--red);">rebitagem</span></h3>
           </div>
           <div style="padding:18px 22px;">
-            <sc-for list="{{ freiosLonasSteps }}" as="st" hint-placeholder-count="5"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.5; color:var(--ink);">{{ st.t }}</span></div></sc-for>
+            <sc-for data-procedure="true" list="{{ freiosLonasSteps }}" as="st" hint-placeholder-count="5"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.5; color:var(--ink);">{{ st.t }}</span></div></sc-for>
           </div>
         </div>
         <figure data-reveal="1" onClick="{{ freiosLonasFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
@@ -2763,7 +2799,7 @@
         <h3 style="font-family:var(--cond); font-weight:800; font-size:22px; line-height:.95; text-transform:uppercase; color:var(--ink); margin:0;">Tirando o motor do carro</h3>
       </div>
       <div style="padding:18px 24px;">
-        <sc-for list="{{ motorDesmontSteps }}" as="st" hint-placeholder-count="8">
+        <sc-for data-procedure="true" list="{{ motorDesmontSteps }}" as="st" hint-placeholder-count="8">
           <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
             <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:20px; text-align:right; padding-top:2px;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--ink); flex:1 1 auto;">{{ st.t }} <sc-if value="{{ st.hasNav }}"><button onClick="{{ st.onNav }}" style="background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">{{ st.navLabel }}</button></sc-if></span>
@@ -2795,7 +2831,7 @@
         <h3 style="font-family:var(--cond); font-weight:800; font-size:22px; line-height:.95; text-transform:uppercase; color:var(--ink); margin:0;">Começando a abrir o motor</h3>
       </div>
       <div style="padding:18px 24px;">
-        <sc-for list="{{ motorDesarmeSteps }}" as="st" hint-placeholder-count="5">
+        <sc-for data-procedure="true" list="{{ motorDesarmeSteps }}" as="st" hint-placeholder-count="5">
           <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
             <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:20px; text-align:right; padding-top:2px;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--ink); flex:1 1 auto;">{{ st.t }} <sc-if value="{{ st.hasNav }}"><button onClick="{{ st.onNav }}" style="background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:11.5px; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">{{ st.navLabel }}</button></sc-if></span>
@@ -2937,7 +2973,7 @@
       </div>
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ embPedalSteps }}" as="s" hint-placeholder-count="4">
+        <sc-for data-procedure="true" list="{{ embPedalSteps }}" as="s" hint-placeholder-count="4">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -2963,7 +2999,7 @@
       </figure>
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ embBuchasSteps }}" as="s" hint-placeholder-count="3">
+        <sc-for data-procedure="true" list="{{ embBuchasSteps }}" as="s" hint-placeholder-count="3">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -2989,7 +3025,7 @@
       </figure>
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ embAlturaSteps }}" as="s" hint-placeholder-count="4">
+        <sc-for data-procedure="true" list="{{ embAlturaSteps }}" as="s" hint-placeholder-count="4">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -3022,7 +3058,7 @@
       <div style="display:flex; flex-direction:column; gap:22px;">
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ embGarfoSteps }}" as="s" hint-placeholder-count="7">
+        <sc-for data-procedure="true" list="{{ embGarfoSteps }}" as="s" hint-placeholder-count="7">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -3064,7 +3100,7 @@
       </div>
       <div data-reveal="1" style="border:1px solid var(--line); border-radius:14px; background:var(--panel); overflow:hidden;">
         <div style="padding:14px 22px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-        <sc-for list="{{ embComandoSteps }}" as="s" hint-placeholder-count="9">
+        <sc-for data-procedure="true" list="{{ embComandoSteps }}" as="s" hint-placeholder-count="9">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
@@ -3175,7 +3211,7 @@
       </div>
       <div style="display:grid; grid-template-columns:1fr 0.9fr; gap:0; align-items:stretch;">
       <div style="padding:16px 24px; border-right:1px solid var(--line);">
-        <sc-for list="{{ injetorTest }}" as="st" hint-placeholder-count="4">
+        <sc-for data-procedure="true" list="{{ injetorTest }}" as="st" hint-placeholder-count="4">
           <div style="display:flex; gap:14px; padding:9px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
             <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:18px; text-align:right; padding-top:2px;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -3241,7 +3277,7 @@
             <span style="flex:1 1 auto; height:1px; background:var(--ink); opacity:.12;"></span>
             <span style="font-family:var(--mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); flex:0 0 auto;">{{ g.fig }}</span>
           </div>
-          <sc-for list="{{ g.steps }}" as="st" hint-placeholder-count="3">
+          <sc-for data-procedure="true" list="{{ g.steps }}" as="st" hint-placeholder-count="3">
             <div style="display:flex; gap:12px; padding:8px 0; border-bottom:1px solid var(--line); align-items:flex-start;">
               <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:16px; text-align:right; padding-top:1px;">{{ st.n }}</span>
               <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ st.t }}</span>
@@ -3304,7 +3340,7 @@
           <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red);">Ponto de ignição</div>
           <div style="font-family:var(--cond); font-weight:800; font-size:26px; line-height:.9; color:var(--ink);">{{ ignPontoValue }}</div>
         </div>
-        <sc-for list="{{ ignPontoSteps }}" as="st" hint-placeholder-count="3">
+        <sc-for data-procedure="true" list="{{ ignPontoSteps }}" as="st" hint-placeholder-count="3">
           <div style="display:flex; gap:10px; padding:6px 0; align-items:flex-start;">
             <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); flex:0 0 auto; width:14px; text-align:right; padding-top:1px;">{{ st.n }}</span>
             <span style="font-family:var(--sans); font-size:12.5px; line-height:1.5; color:var(--ink);">{{ st.t }}</span>
@@ -3346,7 +3382,7 @@
       <p style="font-family:var(--sans); font-size:13.5px; line-height:1.62; color:var(--ink); margin:0;">{{ manutPop.note }}</p>
       <sc-if value="{{ manutPop.hasSteps }}">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin:20px 0 10px;">Passo a passo</div>
-        <sc-for list="{{ manutPop.steps }}" as="s" hint-placeholder-count="4">
+        <sc-for data-procedure="true" list="{{ manutPop.steps }}" as="s" hint-placeholder-count="4">
           <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:11px;">
             <span style="flex:0 0 auto; width:24px; height:24px; border-radius:50%; border:1px solid var(--red); color:var(--red); font-family:var(--mono); font-size:11px; display:flex; align-items:center; justify-content:center;">{{ s.n }}</span>
             <span style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);">{{ s.t }}</span>

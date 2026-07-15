@@ -5439,12 +5439,11 @@ class Component extends DCLogic {
       isAlternador: this.state.view === 'alternador',
       isFreios: this.state.view === 'freios',
       freiosTabs: [
-        { id: 'pastilhas', label: 'Pastilhas de freio' },
-        { id: 'disco', label: 'Disco de freio' },
+        { id: 'pastilhas', label: 'Freios dianteiros' },
         { id: 'traseiros', label: 'Freios traseiros' }
       ].map(t => ({ label: t.label, onClick: () => { this.setState({ freiosTab: t.id }); try { const sc = document.getElementById('freiosScroll'); if (sc) sc.scrollTop = 0; } catch (e) {} }, style: this.tabStyle((this.state.freiosTab || 'pastilhas') === t.id) })),
       freiosTabPastilhas: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
-      freiosTabDisco: this.state.freiosTab === 'disco',
+      freiosTabDisco: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
       freiosTabTraseiros: this.state.freiosTab === 'traseiros',
       freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Peças do conjunto do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — peças do conjunto, itens 1 a 14' } }) },
       freiosTraseirosParts: [

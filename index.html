@@ -4993,7 +4993,7 @@ const MANUT = {
     { id: 'velas', grupo: 'Motor', name: 'Velas de ignição', cols: [4,7,9], nav: 'ignicao', note: 'Substituir as velas. Confira a folga e o aperto no guia de Ignição (TFI).' },
     { id: 'corpoBorb', grupo: 'Motor', name: 'Corpo de borboleta — limpeza e ajuste', cols: [2,4,7,9,10], nav: 'coletor', gti: true, note: 'No GTI (injeção EEC-IV) o antigo "carburador: limpeza e ajuste" vira limpeza do corpo de borboleta e verificação do batente/marcha lenta.' },
     { id: 'mistura', grupo: 'Motor', name: 'Marcha lenta e mistura (CO) — verificar', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'ecu', gti: true, note: 'No GTI a marcha lenta e a mistura são geridas pela central EEC-IV. Verificar o regime de marcha lenta e o teor de CO.' },
-    { id: 'correia', grupo: 'Motor', name: 'Correia dentada e correias — verificar', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, crit: true, note: 'Verificar estado e tensão. A correia dentada deve ser SUBSTITUÍDA por volta dos 60.000 km — item crítico, a quebra danifica o motor.' },
+    { id: 'correia', grupo: 'Motor', name: 'Correia dentada e correias — verificar', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'motor', crit: true, note: 'Verificar estado e tensão. A correia dentada deve ser SUBSTITUÍDA por volta dos 60.000 km — item crítico, a quebra danifica o motor.' },
     { id: 'distribuidor', grupo: 'Motor', name: 'Distribuidor — rotor, tampa e avanço', cols: [2,4,7,8,9], nav: 'ignicao', gti: true, note: 'No GTI a ignição é eletrônica (TFI / efeito Hall) — não há platinados para regular. Verificar rotor, tampa e o avanço.' },
     { id: 'filtroAr', grupo: 'Motor', name: 'Filtro de ar — limpar e substituir', cols: [2,4,7,8,10], nav: 'ar', note: 'Inspecionar e limpar o elemento filtrante nas revisões e substituí-lo quando estiver saturado ou danificado.' },
     { id: 'radiador', grupo: 'Motor', name: 'Radiador — limpeza e aletas', cols: [2,4,7,8,10], nav: null, note: 'Verificar limpeza e alinhar as aletas.' },
@@ -5004,18 +5004,18 @@ const MANUT = {
 
     { id: 'freioVer', grupo: 'Freios', name: 'Fluido de freio — verificar nível', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar e completar o nível (DOT 4).' },
     { id: 'freioTroca', grupo: 'Freios', name: 'Fluido de freio — drenar e substituir', cols: [6,9], nav: null, note: 'Drenar e substituir. Ou a cada 2 anos — o fluido é higroscópico.' },
-    { id: 'freioDesgaste', grupo: 'Freios', name: 'Pastilhas, lonas, flexíveis e freio de mão', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar o desgaste de pastilhas e lonas, estado dos flexíveis e regular o freio de mão.' },
+    { id: 'freioDesgaste', grupo: 'Freios', name: 'Pastilhas, lonas, flexíveis e freio de mão', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'freios', note: 'Verificar o desgaste de pastilhas e lonas, estado dos flexíveis e regular o freio de mão.' },
 
     { id: 'direcao', grupo: 'Suspensão e direção', name: 'Direção — inspecionar e alinhar', cols: [1,2,4,7], nav: null, note: 'Inspecionar componentes, ajustar a caixa de direção e alinhar o trem dianteiro.' },
     { id: 'suspensao', grupo: 'Suspensão e direção', name: 'Guarda-pós, rótulas e amortecedores', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar estado de guarda-pós e rótulas; verificar o estado e as fixações dos amortecedores.' },
     { id: 'rodas', grupo: 'Suspensão e direção', name: 'Rodas e pneus', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Rodízio, balanceamento, pressão de enchimento e estado de pneus e rodas.' },
 
-    { id: 'caixa', grupo: 'Transmissão', name: 'Caixa de câmbio — nível', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar o nível de lubrificante da caixa.' },
-    { id: 'embreagem', grupo: 'Transmissão', name: 'Embreagem — folga e regulagem', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar a folga e regular.' },
-    { id: 'homocineticas', grupo: 'Transmissão', name: 'Juntas homocinéticas', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar o estado e as coifas (guarda-pós).' },
+    { id: 'caixa', grupo: 'Transmissão', name: 'Caixa de câmbio — nível', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'transmissao', note: 'Verificar o nível de lubrificante da caixa.' },
+    { id: 'embreagem', grupo: 'Transmissão', name: 'Embreagem — folga e regulagem', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'embreagem', note: 'Verificar a folga e regular.' },
+    { id: 'homocineticas', grupo: 'Transmissão', name: 'Juntas homocinéticas', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'transremocao', note: 'Verificar o estado e as coifas (guarda-pós).' },
 
     { id: 'bateria', grupo: 'Sistema elétrico', name: 'Bateria — estado', cols: [1,3,6,9], nav: null, note: 'Verificar o estado da bateria.' },
-    { id: 'cargaAlt', grupo: 'Sistema elétrico', name: 'Carga do alternador e arranque', cols: [1,3,6,9], nav: null, note: 'Verificar a carga do alternador (Bosch linha K1) e o motor de arranque.' },
+    { id: 'cargaAlt', grupo: 'Sistema elétrico', name: 'Carga do alternador e arranque', cols: [1,3,6,9], nav: 'alternador', note: 'Verificar a carga do alternador (Bosch linha K1) e o motor de arranque.' },
 
     { id: 'instrumentos', grupo: 'Global', name: 'Instrumentos, luzes e opcionais', cols: [1,3,6,9], nav: 'painel', note: 'Verificar instrumentos, luzes e opcionais.' },
     { id: 'lubrificacao', grupo: 'Global', name: 'Lubrificação geral', cols: [1,3,6,9], nav: null, note: 'Lubrificar portas, capô, tampa traseira, cabo do acelerador, fechaduras e pedais.' },
@@ -5047,7 +5047,8 @@ class Component extends DCLogic {
   navFor(key) {
     if (!key) return null;
     if (key === 'ar') return { label: 'Filtro de ar', on: () => { this.setState({ ecuTab: 'alimentacao' }); this.setView('ecu'); } };
-    const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos' };
+    if (key === 'transremocao') return { label: 'Câmbio · remoção da caixa', on: () => { this.setState({ transTab: 'remocao' }); this.setView('transmissao'); } };
+    const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos', motor: 'Motor', freios: 'Freios', transmissao: 'Câmbio', embreagem: 'Embreagem', alternador: 'Alternador' };
     return { label: labels[key] || key, on: () => this.setView(key) };
   }
 
@@ -5504,7 +5505,8 @@ class Component extends DCLogic {
         const navFor = (key) => {
           if (!key) return null;
           if (key === 'ar') return { label: 'Filtro de ar', on: () => { this.setState({ ecuTab: 'alimentacao' }); this.setView('ecu'); } };
-          const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos' };
+          if (key === 'transremocao') return { label: 'Câmbio · remoção da caixa', on: () => { this.setState({ transTab: 'remocao' }); this.setView('transmissao'); } };
+          const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos', motor: 'Motor', freios: 'Freios', transmissao: 'Câmbio', embreagem: 'Embreagem', alternador: 'Alternador' };
           return { label: labels[key] || key, on: () => this.setView(key) };
         };
         const kmChip = (c) => (c * 10) + 'k';
@@ -5516,7 +5518,7 @@ class Component extends DCLogic {
             id: it.id, name: it.name, note: it.note || '', grupo: it.grupo,
             crit: !!it.crit, gti: !!it.gti, due,
             colsTxt: every ? 'Toda revisão' : it.cols.map(kmChip).join(' · '),
-            hasNav: !!nav, navLabel: 'Ver o que fazer →', onNav: () => this.setState({ itemPop: it.id }),
+            hasNav: true, navLabel: 'Ver o que fazer →', onNav: () => this.setState({ itemPop: it.id }),
             rowStyle: 'display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:6px 16px; padding:13px 16px; border:1px solid ' + (due ? 'var(--red)' : 'var(--line)') + '; border-radius:12px; background:' + (due ? 'color-mix(in srgb, var(--red) 9%, var(--panel))' : 'var(--panel)') + '; margin-bottom:8px;',
             colsStyle: 'font-family:var(--mono); font-size:10.5px; letter-spacing:.02em; white-space:nowrap; flex:0 0 auto; color:' + (due ? 'var(--red)' : 'var(--faint)') + ';',
           };

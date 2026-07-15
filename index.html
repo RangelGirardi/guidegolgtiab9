@@ -2381,6 +2381,31 @@
         </div>
         <div style="margin-top:14px; padding:14px 18px; border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); font-family:var(--sans); font-size:12.8px; line-height:1.5; color:var(--ink);"><strong>Atenção:</strong> o pino deve entrar livremente. Não force nem desloque o pedal ou a haste para alinhar os furos.</div>
       </div>
+
+      <div style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Freio de estacionamento</div>
+        <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Alavanca e <span style="color:var(--red);">cabos</span></h3>
+        <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr); gap:20px; align-items:start;">
+          <figure data-reveal="1" onClick="{{ freioEstacionamentoFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+            <div style="padding:16px; display:flex; align-items:center; justify-content:center;"><img src="{{ freioEstacionamentoFig.src }}" alt="{{ freioEstacionamentoFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+            <figcaption style="font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;">Alavanca do freio de estacionamento — peças do conjunto · clique para ampliar</figcaption>
+          </figure>
+          <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Peças do conjunto</div>
+            <div style="padding:6px 18px 12px;"><sc-for list="{{ freioEstacionamentoParts }}" as="p" hint-placeholder-count="7"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:9px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ p.n }}</span><span style="font-family:var(--sans); font-size:12.8px; line-height:1.45; color:var(--ink);">{{ p.t }}</span></div></sc-for></div>
+          </div>
+        </div>
+        <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(240px,.65fr); gap:20px; align-items:start; margin-top:20px;">
+          <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Início da remoção</div>
+            <div style="padding:18px 20px;"><sc-for list="{{ freioEstacionamentoSteps }}" as="st" hint-placeholder-count="2"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
+          </div>
+          <figure data-reveal="1" onClick="{{ freioEstacionamentoEqualizadorFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+            <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ freioEstacionamentoEqualizadorFig.src }}" alt="{{ freioEstacionamentoEqualizadorFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">1</span><span>Retirada do equalizador dos cabos</span></figcaption>
+          </figure>
+        </div>
+      </div>
       <div data-section-end="true" aria-hidden="true"></div>
     </div>
     </sc-if>
@@ -5528,6 +5553,21 @@ class Component extends DCLogic {
         'Gire a haste até que o furo do garfo fique perfeitamente alinhado com o furo do pedal.',
         'Recoloque o pino. Ele deve entrar suavemente, sem forçar o pedal nem a haste.',
         'Mantendo o pedal na posição de repouso e sem deixar a haste girar, aperte a contraporca.'
+      ].map((t, i) => ({ n: String(i + 1), t })),
+      freioEstacionamentoFig: { src: 'uploads/imgz/freio-estacionamento-alavanca-pecas.png', label: 'Alavanca do freio de estacionamento — peças do conjunto', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freio-estacionamento-alavanca-pecas.png', label: 'Alavanca do freio de estacionamento — peças do conjunto' } }) },
+      freioEstacionamentoEqualizadorFig: { src: 'uploads/imgz/freio-estacionamento-equalizador.png', label: 'Retirada do equalizador dos cabos do freio de estacionamento', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freio-estacionamento-equalizador.png', label: 'Retirada do equalizador dos cabos do freio de estacionamento' } }) },
+      freioEstacionamentoParts: [
+        'Manopla',
+        'Capa da alavanca',
+        'Alavanca',
+        'Coifa de proteção',
+        'Equalizador dos cabos',
+        'Cabo do freio de estacionamento',
+        'Interruptor da luz indicadora do freio de estacionamento'
+      ].map((t, i) => ({ n: String(i + 1), t })),
+      freioEstacionamentoSteps: [
+        'Eleve o veículo e apoie-o com segurança nos pontos corretos.',
+        'Por baixo do veículo, retire o equalizador dos cabos do freio de estacionamento (ver foto 1).'
       ].map((t, i) => ({ n: String(i + 1), t })),
       freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Peças do conjunto do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — peças do conjunto, itens 1 a 14' } }) },
       freiosTraseirosParts: [

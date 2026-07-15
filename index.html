@@ -2319,6 +2319,28 @@
     </div>
     </sc-if>
 
+    <sc-if value="{{ freiosTabPedal }}">
+    <div data-pageturn="1">
+      <div style="margin-bottom:22px;">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Comando do sistema</div>
+        <h2 style="font-family:var(--cond); font-weight:800; font-size:30px; line-height:1; text-transform:uppercase; margin:0; color:var(--ink);">Pedal de <span style="color:var(--red);">freio</span></h2>
+      </div>
+      <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr); gap:20px; align-items:start;">
+        <figure data-reveal="1" onClick="{{ freiosPedalFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+          <div style="padding:16px; display:flex; align-items:center; justify-content:center;"><img src="{{ freiosPedalFig.src }}" alt="{{ freiosPedalFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+          <figcaption style="font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px; border-top:1px solid var(--line); background:var(--panel);">Pedal de freio e ligação com a haste do cilindro-mestre · clique para ampliar</figcaption>
+        </figure>
+        <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+          <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Peças do conjunto</div>
+          <div style="padding:6px 18px 12px;">
+            <sc-for list="{{ freiosPedalParts }}" as="p" hint-placeholder-count="6"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ p.n }}</span><span style="font-family:var(--sans); font-size:12.8px; line-height:1.45; color:var(--ink);">{{ p.t }}</span></div></sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:48px; padding-top:16px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--faint);">Fonte-base: manual de reparações argentino · tradução e organização para o Gol GTI AB9 1995</div>
+    </div>
+    </sc-if>
+
     <sc-if value="{{ freiosTabTraseiros }}">
     <div data-pageturn="1">
       <div style="margin-bottom:22px;">
@@ -5440,11 +5462,22 @@ class Component extends DCLogic {
       isFreios: this.state.view === 'freios',
       freiosTabs: [
         { id: 'pastilhas', label: 'Freios dianteiros' },
-        { id: 'traseiros', label: 'Freios traseiros' }
+        { id: 'traseiros', label: 'Freios traseiros' },
+        { id: 'pedal', label: 'Pedal de freio' }
       ].map(t => ({ label: t.label, onClick: () => { this.setState({ freiosTab: t.id }); try { const sc = document.getElementById('freiosScroll'); if (sc) sc.scrollTop = 0; } catch (e) {} }, style: this.tabStyle((this.state.freiosTab || 'pastilhas') === t.id) })),
       freiosTabPastilhas: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
       freiosTabDisco: (this.state.freiosTab || 'pastilhas') === 'pastilhas',
       freiosTabTraseiros: this.state.freiosTab === 'traseiros',
+      freiosTabPedal: this.state.freiosTab === 'pedal',
+      freiosPedalFig: { src: 'uploads/imgz/freios-pedal-pecas.png', label: 'Pedal de freio, suporte, haste do cilindro-mestre, travas, pino e buchas', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-pedal-pecas.png', label: 'Pedal de freio — peças do conjunto' } }) },
+      freiosPedalParts: [
+        'Trava do pedal',
+        'Trava da haste de acionamento do cilindro-mestre',
+        'Pino da haste de acionamento do cilindro-mestre',
+        'Haste de acionamento do cilindro-mestre',
+        'Pedal',
+        'Bucha'
+      ].map((t, i) => ({ n: String(i + 1), t })),
       freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Peças do conjunto do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — peças do conjunto, itens 1 a 14' } }) },
       freiosTraseirosParts: [
         'Prato da mola',

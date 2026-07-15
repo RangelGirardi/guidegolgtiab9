@@ -30,8 +30,13 @@
  input::placeholder{ color:var(--faint); opacity:.8; }
  /* Molduras técnicas fluidas: a foto se adapta ao espaço e a legenda cresce abaixo dela. */
  figure{ min-width:0; max-width:100%; }
- figure:has(> figcaption){ display:flex; flex-direction:column; }
+ figure:has(> figcaption){ display:flex; flex-direction:column; background:var(--panel) !important; }
  figure > div{ min-width:0; max-width:100%; }
+ figure:has(> figcaption) > div:first-child{
+   flex:1 1 auto;
+   width:100%;
+   background:#fff;
+ }
  figure img{ max-width:100%; height:auto; }
  figcaption{
    box-sizing:border-box;
@@ -45,6 +50,8 @@
    overflow-wrap:anywhere;
    word-break:normal;
    hyphens:auto;
+   background:var(--panel) !important;
+   border-top:1px solid var(--line) !important;
  }
  [data-section-end]{ margin-top:48px; padding-bottom:28px; border-top:1px solid var(--line); }
  @keyframes lbFade{ from{ opacity:0 } to{ opacity:1 } }

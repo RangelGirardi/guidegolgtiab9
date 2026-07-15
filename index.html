@@ -2391,7 +2391,7 @@
             <div style="padding:8px 18px 14px;"><sc-for list="{{ freiosSapatasSteps }}" as="st" hint-placeholder-count="18"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:9px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:12.8px; line-height:1.48; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
           </div>
           <div data-sapatas-figs="true" style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;">
-            <sc-for list="{{ freiosSapatasFigs }}" as="fig" hint-placeholder-count="6"><figure data-reveal="1" onClick="{{ fig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 8px 20px rgba(0,0,0,.1);" style-hover="border-color:var(--red);"><div style="padding:10px; display:flex; align-items:center; justify-content:center;"><img src="{{ fig.src }}" alt="{{ fig.label }}" loading="lazy" style="width:100%; height:auto; display:block;" /></div><figcaption style="font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px; border-top:1px solid var(--line); background:var(--panel);">{{ fig.label }}</figcaption></figure></sc-for>
+            <sc-for list="{{ freiosSapatasFigs }}" as="fig" hint-placeholder-count="6"><figure data-reveal="1" onClick="{{ fig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 8px 20px rgba(0,0,0,.1);" style-hover="border-color:var(--red);"><div style="padding:10px; display:flex; align-items:center; justify-content:center;"><img src="{{ fig.src }}" alt="{{ fig.label }}" loading="lazy" style="width:100%; height:auto; display:block;" /></div><figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px; border-top:1px solid var(--line); background:var(--panel);"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">{{ fig.n }}</span><span style="min-width:0;">{{ fig.label }}</span></figcaption></figure></sc-for>
           </div>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:20px;">
@@ -5531,13 +5531,13 @@ class Component extends DCLogic {
         'Monte a roda e aperte os parafusos a 100 Nm. Em seguida, regule a folga do rolamento e o freio de estacionamento.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       freiosSapatasFigs: [
-        ['uploads/imgz/freios-sapatas-remover-mola-externa.png', 'Foto 1 — retirada da mola superior externa de retorno com alicate'],
-        ['uploads/imgz/freios-sapatas-remover-mola-interna.png', 'Foto 2 — retirada da mola superior interna e da haste de apoio com chave de fenda'],
-        ['uploads/imgz/freios-sapatas-posicionar-haste.png', 'Foto 3 — instalação da mola superior interna e encaixe na haste de apoio'],
-        ['uploads/imgz/freios-sapatas-montar-mola-externa.png', 'Foto 4 — posicionamento da haste de apoio no alojamento da sapata com alicate'],
-        ['uploads/imgz/freios-sapatas-inserir-cunha.png', 'Foto 5 — recuo da haste e instalação da cunha de ajuste'],
-        ['uploads/imgz/freios-sapatas-montar-alavanca.png', 'Foto 6 — montagem da sapata com a alavanca do freio de estacionamento']
-      ].map(x => ({ src: x[0], label: x[1], onOpen: () => this.setState({ lightbox: { src: x[0], label: x[1] } }) })),
+        ['uploads/imgz/freios-sapatas-remover-mola-externa.png', 'Retirada da mola superior externa de retorno com alicate'],
+        ['uploads/imgz/freios-sapatas-remover-mola-interna.png', 'Retirada da mola superior interna e da haste de apoio com chave de fenda'],
+        ['uploads/imgz/freios-sapatas-posicionar-haste.png', 'Instalação da mola superior interna e encaixe na haste de apoio'],
+        ['uploads/imgz/freios-sapatas-montar-mola-externa.png', 'Posicionamento da haste de apoio no alojamento da sapata com alicate'],
+        ['uploads/imgz/freios-sapatas-inserir-cunha.png', 'Recuo da haste e instalação da cunha de ajuste'],
+        ['uploads/imgz/freios-sapatas-montar-alavanca.png', 'Montagem da sapata com a alavanca do freio de estacionamento']
+      ].map((x, i) => ({ n: String(i + 1), src: x[0], label: x[1], onOpen: () => this.setState({ lightbox: { src: x[0], label: x[1] } }) })),
       freiosLonasSteps: [
         'Substitua sempre as lonas aos pares no mesmo eixo.',
         'Retire os rebites com cuidado para não danificar as sapatas. Antes da montagem, as sapatas devem estar limpas e sem rebarbas.',

@@ -2364,6 +2364,23 @@
           </div>
         </div>
       </div>
+
+      <div data-reveal="1" style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Cilindro-mestre</div>
+        <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Regulagem da <span style="color:var(--red);">haste de acionamento</span></h3>
+        <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+          <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Procedimento</div>
+          <div style="padding:8px 20px 14px;">
+            <sc-for list="{{ freiosCilindroSteps }}" as="st" hint-placeholder-count="5">
+              <div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);">
+                <span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span>
+                <span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="margin-top:14px; padding:14px 18px; border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); font-family:var(--sans); font-size:12.8px; line-height:1.5; color:var(--ink);"><strong>Atenção:</strong> o pino deve entrar livremente. Não force nem desloque o pedal ou a haste para alinhar os furos.</div>
+      </div>
       <div data-section-end="true" aria-hidden="true"></div>
     </div>
     </sc-if>
@@ -5504,6 +5521,13 @@ class Component extends DCLogic {
         'Haste de acionamento do cilindro-mestre',
         'Pedal',
         'Bucha'
+      ].map((t, i) => ({ n: String(i + 1), t })),
+      freiosCilindroSteps: [
+        'Com o pedal na posição de repouso, solte a contraporca da haste de acionamento do cilindro-mestre.',
+        'Retire o pino que liga a haste ao pedal.',
+        'Gire a haste até que o furo do garfo fique perfeitamente alinhado com o furo do pedal.',
+        'Recoloque o pino. Ele deve entrar suavemente, sem forçar o pedal nem a haste.',
+        'Mantendo o pedal na posição de repouso e sem deixar a haste girar, aperte a contraporca.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Peças do conjunto do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — peças do conjunto, itens 1 a 14' } }) },
       freiosTraseirosParts: [

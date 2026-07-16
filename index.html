@@ -2558,6 +2558,40 @@
   </div>
 </sc-if>
 
+<sc-if value="{{ isSuspensao }}">
+  <div id="suspScroll" style="height:100%; overflow-y:auto; background:var(--paper);">
+  <div style="max-width:1040px; margin:0 auto; padding:34px 40px 110px; animation:pageIn .45s ease both;">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; margin-bottom:24px;">
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <button onClick="{{ goHome }}" style="margin-left:0; max-width:100%; display:flex; flex-wrap:wrap; align-items:center; gap:4px 7px; text-align:left; line-height:1.45; background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:10px; letter-spacing:.16em; color:var(--faint); text-transform:uppercase;" style-hover="color:var(--red);">‹ Manual GTI 8V<span style="color:var(--red);"> › Suspensão › Visão geral</span></button>
+        <h1 style="font-family:var(--cond); font-weight:800; font-size:48px; line-height:.9; text-transform:uppercase; margin:0; color:var(--ink);">Suspensão — <span style="color:var(--red);">visão geral</span></h1>
+        <div style="font-family:var(--mono); font-size:10.5px; color:var(--faint); letter-spacing:.03em;">ESTABILIDADE · CONFORTO · ENTRE-EIXOS 2.468 MM</div>
+      </div>
+      <button onClick="{{ toggleTheme }}" title="Alternar tom claro/escuro" style="width:40px; height:40px; flex:0 0 auto; border:1px solid var(--line); background:var(--panel); color:var(--ink); border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; box-shadow:0 6px 18px rgba(0,0,0,.14);" style-hover="border-color:var(--red); color:var(--red);"><sc-if value="{{ isDark }}" hint-placeholder-val="{{ true }}"><span>☼</span></sc-if><sc-if value="{{ isLight }}"><span>☾</span></sc-if></button>
+    </div>
+
+    <div data-manual-nav="true" style="margin-bottom:30px; padding-bottom:22px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:9px;">
+      <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint);">Visões gerais</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;"><button style="{{ suspGeralTabStyle }}">Visão geral</button></div>
+    </div>
+
+    <div data-pageturn="1">
+      <div style="font-family:var(--sans); font-size:13.5px; line-height:1.65; color:var(--ink); max-width:82ch; margin:0 0 22px;">Nos modelos Gol desta geração, o sistema de suspensão recebeu uma alteração geométrica para melhorar a <strong>estabilidade</strong> e o <strong>conforto</strong>. O eixo dianteiro foi deslocado <strong>40 mm para a frente</strong> e o eixo traseiro <strong>70 mm para trás</strong>.</div>
+      <figure data-reveal="1" onClick="{{ suspensaoGeralFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+        <div style="padding:18px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoGeralFig.src }}" alt="{{ suspensaoGeralFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+        <figcaption style="font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;">Alteração da geometria da suspensão e aumento do entre-eixos · clique para ampliar</figcaption>
+      </figure>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-top:20px;">
+        <div style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 20px;"><div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;">Eixo dianteiro</div><div style="font-family:var(--cond); font-weight:800; font-size:30px; color:var(--red);">+40 mm</div><div style="font-family:var(--sans); font-size:12.5px; color:var(--ink); margin-top:4px;">Deslocado para a frente.</div></div>
+        <div style="border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 20px;"><div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;">Eixo traseiro</div><div style="font-family:var(--cond); font-weight:800; font-size:30px; color:var(--red);">+70 mm</div><div style="font-family:var(--sans); font-size:12.5px; color:var(--ink); margin-top:4px;">Deslocado para trás.</div></div>
+        <div style="border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); padding:18px 20px;"><div style="font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;">Entre-eixos</div><div style="font-family:var(--cond); font-weight:800; font-size:30px; color:var(--red);">2.468 mm</div><div style="font-family:var(--sans); font-size:12.5px; color:var(--ink); margin-top:4px;">Aumento total de 110 mm.</div></div>
+      </div>
+      <div data-section-end="true" aria-hidden="true"></div>
+    </div>
+  </div>
+  </div>
+</sc-if>
+
 <sc-if value="{{ isAlternador }}">
   <div id="altScroll" style="height:100%; overflow-y:auto; background:var(--paper);">
   <div style="max-width:1040px; margin:0 auto; padding:34px 40px 110px; animation:pageIn .45s ease both;">
@@ -3957,6 +3991,7 @@ const CATS = [
     { id: 'freios', name: 'Freios', desc: 'Pastilhas e discos dianteiros: remoção, desgaste, empenamento, retífica, limites e torques.', ready: true, view: 'freios' },
   ] },
   { id: 'suspensaocap', name: 'Suspensão', subs: [
+    { id: 'suspGeral', name: 'Visão geral', desc: 'Alteração geométrica dos eixos para maior estabilidade e conforto: 40 mm à frente, 70 mm atrás e entre-eixos de 2.468 mm.', ready: true, view: 'suspensao' },
     { id: 'suspDianteira', name: 'Suspensão dianteira', desc: 'Amortecedor, coluna, rolamento de roda, mola, bandeja, buchas, barra estabilizadora e semieixos.', ready: false },
     { id: 'suspTraseira', name: 'Suspensão traseira', desc: 'Eixo traseiro, buchas do suporte, rolamentos, ponta de eixo e amortecedores.', ready: false },
     { id: 'rodasPneus', name: 'Rodas, pneus & alinhamento', desc: 'Rodas e pneus do grupo 08, pressões e valores de alinhamento.', ready: false },
@@ -5036,7 +5071,7 @@ const MANUT = {
     { id: 'freioDesgaste', grupo: 'Freios', name: 'Pastilhas, lonas, flexíveis e freio de mão', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'freios', note: 'Verificar o desgaste de pastilhas e lonas, estado dos flexíveis e regular o freio de mão.' },
 
     { id: 'direcao', grupo: 'Suspensão e direção', name: 'Direção — inspecionar e alinhar', cols: [1,2,4,7], nav: null, note: 'Inspecionar componentes, ajustar a caixa de direção e alinhar o trem dianteiro.' },
-    { id: 'suspensao', grupo: 'Suspensão e direção', name: 'Guarda-pós, rótulas e amortecedores', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Verificar estado de guarda-pós e rótulas; verificar o estado e as fixações dos amortecedores.' },
+    { id: 'suspensao', grupo: 'Suspensão e direção', name: 'Guarda-pós, rótulas e amortecedores', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'suspensao', note: 'Verificar estado de guarda-pós e rótulas; verificar o estado e as fixações dos amortecedores.' },
     { id: 'rodas', grupo: 'Suspensão e direção', name: 'Rodas e pneus', cols: [1,2,3,4,5,6,7,8,9,10], nav: null, note: 'Rodízio, balanceamento, pressão de enchimento e estado de pneus e rodas.' },
 
     { id: 'caixa', grupo: 'Transmissão', name: 'Caixa de câmbio — nível', cols: [1,2,3,4,5,6,7,8,9,10], nav: 'transmissao', note: 'Verificar o nível de lubrificante da caixa.' },
@@ -5077,7 +5112,7 @@ class Component extends DCLogic {
     if (!key) return null;
     if (key === 'ar') return { label: 'Filtro de ar', on: () => { this.setState({ ecuTab: 'alimentacao' }); this.setView('ecu'); } };
     if (key === 'transremocao') return { label: 'Câmbio · remoção da caixa', on: () => { this.setState({ transTab: 'remocao' }); this.setView('transmissao'); } };
-    const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos', motor: 'Motor', freios: 'Freios', transmissao: 'Câmbio', embreagem: 'Embreagem', alternador: 'Alternador' };
+    const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos', motor: 'Motor', freios: 'Freios', transmissao: 'Câmbio', embreagem: 'Embreagem', alternador: 'Alternador', suspensao: 'Suspensão' };
     return { label: labels[key] || key, on: () => this.setView(key) };
   }
 
@@ -5143,7 +5178,7 @@ class Component extends DCLogic {
     try { id = localStorage.getItem('golgti_active'); view = localStorage.getItem('golgti_view'); theme = localStorage.getItem('golgti_theme'); } catch (e) {}
     const patch = {};
     if (id && DATA.items.some(it => it.id === id)) patch.activeId = id;
-    if (view === 'home' || view === 'guide' || view === 'ecu' || view === 'painel' || view === 'ficha' || view === 'escape' || view === 'ignicao' || view === 'combustivel' || view === 'coletor' || view === 'injetores' || view === 'transmissao' || view === 'embreagem' || view === 'alternador' || view === 'freios') patch.view = view;
+    if (view === 'home' || view === 'guide' || view === 'ecu' || view === 'painel' || view === 'ficha' || view === 'escape' || view === 'ignicao' || view === 'combustivel' || view === 'coletor' || view === 'injetores' || view === 'transmissao' || view === 'embreagem' || view === 'alternador' || view === 'freios' || view === 'suspensao') patch.view = view;
     if (view === 'motor') patch.view = 'home'; // guia do motor travado — aguardando manual UQB/URB
     if (theme === 'escuro' || theme === 'creme') patch.theme = theme;
     // wiring is always derived from the active item — never restored independently
@@ -5579,7 +5614,7 @@ class Component extends DCLogic {
           if (!key) return null;
           if (key === 'ar') return { label: 'Filtro de ar', on: () => { this.setState({ ecuTab: 'alimentacao' }); this.setView('ecu'); } };
           if (key === 'transremocao') return { label: 'Câmbio · remoção da caixa', on: () => { this.setState({ transTab: 'remocao' }); this.setView('transmissao'); } };
-          const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos', motor: 'Motor', freios: 'Freios', transmissao: 'Câmbio', embreagem: 'Embreagem', alternador: 'Alternador' };
+          const labels = { ignicao: 'Ignição (TFI)', coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', injetores: 'Válvulas injetoras', combustivel: 'Combustível', painel: 'Painel & instrumentos', motor: 'Motor', freios: 'Freios', transmissao: 'Câmbio', embreagem: 'Embreagem', alternador: 'Alternador', suspensao: 'Suspensão' };
           return { label: labels[key] || key, on: () => this.setView(key) };
         };
         const kmChip = (c) => (c * 10) + 'k';
@@ -5640,6 +5675,9 @@ class Component extends DCLogic {
       isMotor: this.state.view === 'motor',
       isAlternador: this.state.view === 'alternador',
       isFreios: this.state.view === 'freios',
+      isSuspensao: this.state.view === 'suspensao',
+      suspGeralTabStyle: this.tabStyle(true),
+      suspensaoGeralFig: { src: 'uploads/imgz/suspensao-visao-geral-entre-eixos.png', label: 'Alteração geométrica da suspensão — eixo dianteiro 40 mm à frente, eixo traseiro 70 mm atrás e entre-eixos de 2.468 mm', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-visao-geral-entre-eixos.png', label: 'Suspensão — alteração geométrica e entre-eixos de 2.468 mm' } }) },
       freiosTabsAll: (() => {
         const rodas = [
           { id: 'pastilhas', label: 'Freios dianteiros' },

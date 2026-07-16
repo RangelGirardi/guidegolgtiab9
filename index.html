@@ -29,16 +29,16 @@
  aside::-webkit-scrollbar-thumb, main::-webkit-scrollbar-thumb{ background:rgba(140,140,140,.4); border:3px solid transparent; background-clip:padding-box; border-radius:8px; }
  input::placeholder{ color:var(--faint); opacity:.8; }
  /* Molduras técnicas fluidas: a foto se adapta ao espaço e a legenda cresce abaixo dela. */
- figure{ min-width:0; max-width:100%; }
- figure:has(> figcaption){ display:flex; flex-direction:column; background:var(--panel) !important; }
- figure > div{ min-width:0; max-width:100%; }
- figure:has(> figcaption) > div:first-child{
+ [id$="Scroll"] figure{ min-width:0; max-width:100%; }
+ [id$="Scroll"] figure:has(> figcaption){ display:flex; flex-direction:column; background:var(--panel) !important; }
+ [id$="Scroll"] figure > div{ min-width:0; max-width:100%; }
+ [id$="Scroll"] figure:has(> figcaption) > div:first-child{
    flex:1 1 auto;
    width:100%;
    background:#fff;
  }
- figure img{ max-width:100%; height:auto; }
- figcaption{
+ [id$="Scroll"] figure img{ max-width:100%; height:auto; }
+ [id$="Scroll"] figcaption{
    box-sizing:border-box;
    flex:0 0 auto;
    width:100% !important;
@@ -57,7 +57,7 @@
  [data-freios-grid]{ align-items:stretch !important; }
  [data-manual-grid]{ min-width:0; }
  /* Padrão único dos procedimentos: o mesmo passo a passo usado na Embreagem. */
- sc-for[data-procedure="true"] > div{
+ [id$="Scroll"] sc-for[data-procedure="true"] > div{
    display:flex !important;
    grid-template-columns:none !important;
    gap:16px !important;
@@ -66,7 +66,7 @@
    border-top:1px solid var(--line) !important;
    border-bottom:0 !important;
  }
- sc-for[data-procedure="true"] > div > span:first-child{
+ [id$="Scroll"] sc-for[data-procedure="true"] > div > span:first-child{
    display:inline-flex !important;
    align-items:center !important;
    justify-content:center !important;
@@ -83,7 +83,7 @@
    line-height:1 !important;
    text-align:center !important;
  }
- sc-for[data-procedure="true"] > div > span:nth-child(2){
+ [id$="Scroll"] sc-for[data-procedure="true"] > div > span:nth-child(2){
    min-width:0;
    padding-top:2px !important;
    font-family:var(--sans) !important;
@@ -128,7 +128,7 @@
    [data-manual-nav] button{ max-width:100%; white-space:normal !important; line-height:1.25; text-align:left; }
    [data-sapatas-figs]{ grid-template-columns:1fr !important; }
    [data-section-end]{ margin-top:36px; padding-bottom:20px; }
-   sc-for[data-procedure="true"] > div{ gap:13px !important; padding:13px 16px !important; }
+   [id$="Scroll"] sc-for[data-procedure="true"] > div{ gap:13px !important; padding:13px 16px !important; }
    [data-manual-nav]::after{ content:'↔ deslize para trocar de aba'; font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:1px; }
  }
 

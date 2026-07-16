@@ -120,6 +120,7 @@
    [data-sapatas-figs]{ grid-template-columns:1fr !important; }
    [data-section-end]{ margin-top:36px; padding-bottom:20px; }
    sc-for[data-procedure="true"] > div{ gap:13px !important; padding:13px 16px !important; }
+   [data-manual-nav]::after{ content:'↔ deslize para trocar de aba'; font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:1px; }
  }
 
 </style>
@@ -2454,12 +2455,18 @@
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(240px,.65fr); gap:20px; align-items:start; margin-top:20px;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
             <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-            <div style="padding:18px 20px;"><sc-for data-procedure="true" list="{{ freioEstacionamentoSteps }}" as="st" hint-placeholder-count="2"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:18px 20px;"><sc-for data-procedure="true" list="{{ freioEstacionamentoSteps }}" as="st" hint-placeholder-count="9"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; font-weight:600; color:var(--red); text-align:right;">{{ st.n }}</span><span style="font-family:var(--sans); font-size:13px; line-height:1.52; color:var(--ink);">{{ st.t }}</span></div></sc-for></div>
           </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
           <figure data-reveal="1" onClick="{{ freioEstacionamentoEqualizadorFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ freioEstacionamentoEqualizadorFig.src }}" alt="{{ freioEstacionamentoEqualizadorFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
             <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">1</span><span>Retirada do equalizador dos cabos</span></figcaption>
           </figure>
+          <figure data-reveal="1" onClick="{{ freioEstacionamentoManoplaFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+            <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ freioEstacionamentoManoplaFig.src }}" alt="{{ freioEstacionamentoManoplaFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">2</span><span>Desencaixe da manopla por baixo</span></figcaption>
+          </figure>
+          </div>
         </div>
       </div>
       <div data-section-end="true" aria-hidden="true"></div>
@@ -5079,7 +5086,7 @@ class Component extends DCLogic {
   openOv(id) { this.setState({ ovPop: id }); }
   closeOv() { this.setState({ ovPop: null }); }
 
-  componentWillUnmount() { if (this._timer) clearTimeout(this._timer); if (this._scrollT) clearTimeout(this._scrollT); if (this._onScroll) document.removeEventListener('scroll', this._onScroll, true); if (this._moT) clearTimeout(this._moT); if (this._rescueT) clearTimeout(this._rescueT); if (this._mo) this._mo.disconnect(); if (this._io) this._io.disconnect(); if (this._onRevealEnd) document.removeEventListener('animationend', this._onRevealEnd, true); if (this._onPop) window.removeEventListener('popstate', this._onPop); }
+  componentWillUnmount() { if (this._timer) clearTimeout(this._timer); if (this._scrollT) clearTimeout(this._scrollT); if (this._onScroll) document.removeEventListener('scroll', this._onScroll, true); if (this._onTouchStart) document.removeEventListener('touchstart', this._onTouchStart); if (this._onTouchEnd) document.removeEventListener('touchend', this._onTouchEnd); if (this._moT) clearTimeout(this._moT); if (this._rescueT) clearTimeout(this._rescueT); if (this._mo) this._mo.disconnect(); if (this._io) this._io.disconnect(); if (this._onRevealEnd) document.removeEventListener('animationend', this._onRevealEnd, true); if (this._onPop) window.removeEventListener('popstate', this._onPop); }
 
   emitCode(code) {
     this.stopLamp();
@@ -5148,6 +5155,29 @@ class Component extends DCLogic {
       this._scrollT = setTimeout(() => this.setState({ uiScrolling: false }), 380);
     };
     document.addEventListener('scroll', this._onScroll, true);
+
+    // Navegação por gesto: horizontal troca abas; vertical continua rolando a página.
+    this._onTouchStart = (e) => {
+      try {
+        if (!e.touches || e.touches.length !== 1) return;
+        const t = e.target;
+        if (t && t.closest && t.closest('button, a, input, textarea, select, figure, [role="dialog"]')) return;
+        const p = e.touches[0];
+        if (p.clientX < 24 || p.clientX > (window.innerWidth - 24)) return;
+        this._swipeStart = { x: p.clientX, y: p.clientY, time: Date.now() };
+      } catch (err) {}
+    };
+    this._onTouchEnd = (e) => {
+      try {
+        const s = this._swipeStart; this._swipeStart = null;
+        if (!s || !e.changedTouches || !e.changedTouches.length) return;
+        const p = e.changedTouches[0], dx = p.clientX - s.x, dy = p.clientY - s.y;
+        if (Date.now() - s.time > 900 || Math.abs(dx) < 55 || Math.abs(dx) < Math.abs(dy) * 1.35) return;
+        this.swipeTab(dx < 0 ? 1 : -1);
+      } catch (err) {}
+    };
+    document.addEventListener('touchstart', this._onTouchStart, { passive:true });
+    document.addEventListener('touchend', this._onTouchEnd, { passive:true });
 
     // Botão voltar do navegador
     try {
@@ -5230,6 +5260,27 @@ class Component extends DCLogic {
     const dir = (a >= 0 && b >= 0 && b < a) ? 'back' : 'fwd';
     try { document.documentElement.setAttribute('data-turn', dir); } catch (e) {}
     this.setState({ [key]: id });
+  }
+
+  swipeTab(delta) {
+    const v = this.state.view;
+    const move = (key, order, setter) => {
+      const cur = this.state[key] || order[0], i = order.indexOf(cur);
+      if (i < 0) return;
+      const next = i + delta;
+      if (next < 0 || next >= order.length) return;
+      if (setter) setter(order[next]);
+      else { this._dirTab(key, order[next], order); this.setState({ [key]: order[next] }); }
+    };
+    if (v === 'transmissao') return move('transTab', ['cambio','eixoprim','eixopinhao','diferencial','alavanca','coxim','remocao','seletora','abertura','eixosdesm','montagem','monteixo','montpinhao','coroapinhao','carcaca'], x => this.setTransTab(x));
+    if (v === 'embreagem') return move('embTab', ['geral','pedal','buchas','altura','garfo','comando']);
+    if (v === 'freios') return move('freiosTab', ['pastilhas','traseiros','pedal','freiodemao']);
+    if (v === 'ecu') return move('ecuTab', ['visao','codigos','sensores','medidas','quarterhorse','ometer','modulos','alimentacao'], x => this.setEcuTab(x));
+    if (v === 'painel') return move('painelTab', ['visao','instrumentos','computador','espias','eletrica','codigos','afericao'], x => this.setPainelTab(x));
+    if (v === 'ignicao') return move('ignTab', ['proc','testes'], x => this.setIgnTab(x));
+    if (v === 'alternador') return move('altTab', ['fix','k1','k90','upgrade']);
+    if (v === 'motor') return move('motorTab', ['bloco','desmont','desarme']);
+    if (v === 'home') return move('homeTab', ['indice','revisoes']);
   }
 
   snapshotNav() {
@@ -5622,6 +5673,7 @@ class Component extends DCLogic {
       ].map((t, i) => ({ n: String(i + 1), t })),
       freioEstacionamentoFig: { src: 'uploads/imgz/freio-estacionamento-alavanca-pecas.png', label: 'Alavanca do freio de estacionamento — peças do conjunto', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freio-estacionamento-alavanca-pecas.png', label: 'Alavanca do freio de estacionamento — peças do conjunto' } }) },
       freioEstacionamentoEqualizadorFig: { src: 'uploads/imgz/freio-estacionamento-equalizador.png', label: 'Retirada do equalizador dos cabos do freio de estacionamento', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freio-estacionamento-equalizador.png', label: 'Retirada do equalizador dos cabos do freio de estacionamento' } }) },
+      freioEstacionamentoManoplaFig: { src: 'uploads/imgz/freio-estacionamento-remover-manopla.png', label: 'Desencaixe da manopla da alavanca do freio de mão', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freio-estacionamento-remover-manopla.png', label: 'Desencaixe da manopla da alavanca do freio de mão' } }) },
       freioEstacionamentoParts: [
         'Manopla',
         'Capa da alavanca',
@@ -5633,7 +5685,14 @@ class Component extends DCLogic {
       ].map((t, i) => ({ n: String(i + 1), t })),
       freioEstacionamentoSteps: [
         'Eleve o veículo e apoie-o com segurança nos pontos corretos.',
-        'Por baixo do veículo, retire o equalizador dos cabos do freio de estacionamento (ver foto 1).'
+        'Por baixo do veículo, retire o equalizador dos cabos do freio de estacionamento (ver foto 1).',
+        'Abaixe o veículo.',
+        'Retire a capa da alavanca do freio de mão.',
+        'Com uma chave de fenda, desencaixe a manopla por baixo e, ao mesmo tempo, puxe-a para a frente (ver foto 2).',
+        'Retire o acabamento do assoalho ao redor da alavanca.',
+        'Remova os dois parafusos que fixam a alavanca ao assoalho.',
+        'Desconecte o conector do interruptor da luz indicadora do freio de mão.',
+        'Puxe a alavanca para a frente até retirá-la do veículo.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       freiosTraseirosFig: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Peças do conjunto do freio traseiro a tambor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/freios-traseiros-explodido.png', label: 'Freio traseiro a tambor — peças do conjunto, itens 1 a 14' } }) },
       freiosTraseirosParts: [

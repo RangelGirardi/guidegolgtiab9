@@ -57,7 +57,7 @@
  [data-freios-grid]{ align-items:stretch !important; }
  [data-manual-grid]{ min-width:0; }
  /* Padrão único dos procedimentos: o mesmo passo a passo usado na Embreagem. */
- [id$="Scroll"] sc-for[data-procedure="true"] > div{
+ sc-for[data-procedure="true"] > div{
    display:flex !important;
    grid-template-columns:none !important;
    gap:16px !important;
@@ -66,7 +66,7 @@
    border-top:1px solid var(--line) !important;
    border-bottom:0 !important;
  }
- [id$="Scroll"] sc-for[data-procedure="true"] > div > span:first-child{
+ sc-for[data-procedure="true"] > div > span:first-child{
    display:inline-flex !important;
    align-items:center !important;
    justify-content:center !important;
@@ -82,8 +82,10 @@
    font-weight:800 !important;
    line-height:1 !important;
    text-align:center !important;
+   box-sizing:border-box !important;
+   transform:none !important;
  }
- [id$="Scroll"] sc-for[data-procedure="true"] > div > span:nth-child(2){
+ sc-for[data-procedure="true"] > div > span:nth-child(2){
    min-width:0;
    padding-top:2px !important;
    font-family:var(--sans) !important;
@@ -2657,7 +2659,7 @@
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
             <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoColunaSteps }}" as="st" hint-placeholder-count="7"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoColunaSteps }}" as="st" hint-placeholder-count="7"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }} <sc-if value="{{ st.hasNav }}"><button onClick="{{ st.onNav }}" style="display:block; margin-top:8px; background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">{{ st.navLabel }}</button></sc-if></span></div></sc-for></div>
           </div>
           <figure onClick="{{ suspensaoColunaFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoColunaFig.src }}" alt="{{ suspensaoColunaFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
@@ -2678,7 +2680,7 @@
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
             <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoRolamentoSteps }}" as="st" hint-placeholder-count="13"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoRolamentoSteps }}" as="st" hint-placeholder-count="13"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }} <sc-if value="{{ st.hasNav }}"><button onClick="{{ st.onNav }}" style="display:block; margin-top:8px; background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">{{ st.navLabel }}</button></sc-if></span></div></sc-for></div>
           </div>
           <figure onClick="{{ suspensaoRolamentoFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoRolamentoFig.src }}" alt="{{ suspensaoRolamentoFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
@@ -3062,7 +3064,7 @@
 
     <div style="margin-bottom:24px; padding:14px 18px; border:1px solid var(--red); border-radius:12px; background:color-mix(in srgb, var(--red) 9%, transparent); display:flex; gap:12px; align-items:flex-start;">
       <span style="font-family:var(--cond); font-weight:800; font-size:20px; color:var(--red); line-height:1; flex:0 0 auto;">!</span>
-      <div style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);"><strong>Acesso:</strong> o disco e o platô ficam entre a caixa e o volante do motor. Para chegar até eles é preciso primeiro <strong>remover a caixa de câmbio</strong> — veja o passo a passo em <strong>Transmissão › Câmbio › Remoção da caixa</strong>.</div>
+      <div style="font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink);"><strong>Acesso:</strong> o disco e o platô ficam entre a caixa e o volante do motor. Para chegar até eles é preciso primeiro <strong>remover a caixa de câmbio</strong>.<button onClick="{{ goTransRemocao }}" style="display:block; margin-top:7px; background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">Veja como fazer: remover a caixa de câmbio →</button></div>
     </div>
 
     <div data-manual-nav="true" style="margin-bottom:30px; padding-bottom:22px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:16px;">
@@ -3179,7 +3181,7 @@
         <sc-for data-procedure="true" list="{{ embBuchasSteps }}" as="s" hint-placeholder-count="3">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
-            <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
+            <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }} <sc-if value="{{ s.hasNav }}"><button onClick="{{ s.onNav }}" style="display:block; margin-top:8px; background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">{{ s.navLabel }}</button></sc-if></span>
           </div>
         </sc-for>
         <div style="display:flex; gap:12px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line); background:color-mix(in srgb, var(--red) 6%, transparent);">
@@ -3280,7 +3282,7 @@
         <sc-for data-procedure="true" list="{{ embComandoSteps }}" as="s" hint-placeholder-count="9">
           <div style="display:flex; gap:16px; align-items:flex-start; padding:15px 22px; border-top:1px solid var(--line);">
             <span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:26px; height:26px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:13px;">{{ s.n }}</span>
-            <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }}</span>
+            <span style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); padding-top:2px;">{{ s.t }} <sc-if value="{{ s.hasNav }}"><button onClick="{{ s.onNav }}" style="display:block; margin-top:8px; background:none; border:none; padding:0; cursor:pointer; font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--red); text-decoration:underline; text-underline-offset:3px;" style-hover="text-decoration:none;">{{ s.navLabel }}</button></sc-if></span>
           </div>
         </sc-for>
       </div>
@@ -5836,7 +5838,7 @@ class Component extends DCLogic {
         'Retire o parafuso que prende o pivô da suspensão ao suporte da coluna.',
         'Desencaixe o pivô da suspensão com uma alavanca ou com o extrator VW 047Z mostrado na Foto 1.',
         'Retire a porca do suporte superior da coluna na carroceria e saque o conjunto da coluna.'
-      ].map((t, i) => ({ n: String(i + 1), t })),
+      ].map((t, i) => ({ n: String(i + 1), t, hasNav: i === 2, navLabel: i === 2 ? 'Veja como fazer: remover a pinça de freio →' : '', onNav: i === 2 ? (() => { this.setState({ freiosTab: 'pastilhas' }); this.setView('freios'); }) : (() => {}) })),
       suspensaoColunaFig: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Desencaixe do pivô da suspensão no suporte da coluna com o extrator VW 047Z', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Foto 1 · Suporte da coluna — extrator VW 047Z' } }) },
       suspensaoRolamentoSteps: [
         'Remova o suporte da coluna de suspensão conforme o procedimento da subaba Suporte da coluna.',
@@ -5852,7 +5854,7 @@ class Component extends DCLogic {
         'Prense o cubo da roda no rolamento.',
         'Instale o protetor do disco e o disco de freio.',
         'Reinstale o suporte da coluna de suspensão.'
-      ].map((t, i) => ({ n: String(i + 1), t })),
+      ].map((t, i) => ({ n: String(i + 1), t, hasNav: i === 0 || i === 1, navLabel: i === 0 ? 'Veja como fazer: remover o suporte da coluna →' : (i === 1 ? 'Veja como fazer: freios dianteiros →' : ''), onNav: i === 0 ? (() => { this.setState({ suspTab: 'dianteira', suspFrontTab: 'coluna' }); }) : (i === 1 ? (() => { this.setState({ freiosTab: 'pastilhas' }); this.setView('freios'); }) : (() => {})) })),
       suspensaoRolamentoFig: { src: 'uploads/imgz/suspensao-dianteira-rolamento-cubo-vw295a-045z.png', label: 'Extração da pista interna do rolamento do cubo com as ferramentas VW 295A e VW 045Z', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-rolamento-cubo-vw295a-045z.png', label: 'Foto 1 · Rolamento da roda — extração da pista interna' } }) },
       suspensaoRolamentoFig2: { src: 'uploads/imgz/suspensao-dianteira-rolamento-prensa-vw412-066-5668-402.png', label: 'Instalação do rolamento novo na prensa com as ferramentas VW 412, VW 066, VW 5668 e VW 402', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-rolamento-prensa-vw412-066-5668-402.png', label: 'Foto 2 · Rolamento da roda — instalação na prensa' } }) },
       freiosTabsAll: (() => {
@@ -6033,7 +6035,7 @@ class Component extends DCLogic {
       motorTabDesarme: (this.state.motorTab || 'bloco') === 'desarme',
       motorDesarmeSteps: MOTOR.desarmeSteps.map((s, i) => {
         const labels = { ignicao: 'Ignição (TFI)' };
-        return { n: String(i + 1), t: s.t, hasNav: !!s.nav, navLabel: s.nav ? ('→ Guia: ' + (labels[s.nav] || s.nav)) : '', onNav: s.nav ? (() => this.setView(s.nav)) : (() => {}) };
+        return { n: String(i + 1), t: s.t, hasNav: !!s.nav, navLabel: s.nav ? ('Veja como fazer: ' + (labels[s.nav] || s.nav) + ' →') : '', onNav: s.nav ? (() => this.setView(s.nav)) : (() => {}) };
       }),
       motorExtratorFig: { src: 'uploads/imgz/motor-desarme-extrator-engrenagem.jpg', label: 'Ferramenta de extração da engrenagem do virabrequim — rebaixo coincidindo com a saliência da engrenagem e face A dos pernos apoiada no cárter', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/motor-desarme-extrator-engrenagem.jpg', label: 'Extração da engrenagem do virabrequim — face A dos pernos apoiada no cárter' } }) },
       motorRetentorFig: { src: 'uploads/imgz/motor-desarme-retentor-intermediario.jpg', label: 'Retentor de vedação do eixo intermediário (setas)', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/motor-desarme-retentor-intermediario.jpg', label: 'Retentor de vedação do eixo intermediário (setas)' } }) },
@@ -6041,7 +6043,7 @@ class Component extends DCLogic {
       motorDistFig: { src: 'uploads/imgz/motor-desarme-distribuidor.jpg', label: 'Porca de fixação do distribuidor (seta), atrás do filtro de óleo — remover para sacar o distribuidor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/motor-desarme-distribuidor.jpg', label: 'Porca de fixação do distribuidor (seta)' } }) },
       motorDesmontSteps: MOTOR.desmontSteps.map((s, i) => {
         const labels = { coletor: 'Coletor de admissão', ecu: 'Injeção EEC-IV', combustivel: 'Combustível', injetores: 'Válvulas injetoras', ignicao: 'Ignição (TFI)', escape: 'Sistema de escape', transmissao: 'Câmbio', embreagem: 'Embreagem' };
-        return { n: String(i + 1), t: s.t, hasNav: !!s.nav, navLabel: s.nav ? ('→ Guia: ' + (labels[s.nav] || s.nav)) : '', onNav: s.nav ? (() => this.setView(s.nav)) : (() => {}) };
+        return { n: String(i + 1), t: s.t, hasNav: !!s.nav, navLabel: s.nav ? ('Veja como fazer: ' + (labels[s.nav] || s.nav) + ' →') : '', onNav: s.nav ? (() => this.setView(s.nav)) : (() => {}) };
       }),
       motorDetFig: { src: 'uploads/imgz/motor-desmont-cabo-embreagem.jpg', label: 'Cabo de comando da embreagem no suporte (seta) — soltar antes de sacar o motor', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/motor-desmont-cabo-embreagem.jpg', label: 'Cabo de comando da embreagem no suporte (seta)' } }) },
       motorCorrenteFig: { src: 'uploads/imgz/motor-desmont-corrente.jpg', label: 'Corrente de elevação instalada no olhal traseiro do motor e no suporte do alternador (seta)', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/motor-desmont-corrente.jpg', label: 'Corrente de elevação — olhal traseiro do motor e suporte do alternador (seta)' } }) },
@@ -6058,7 +6060,7 @@ class Component extends DCLogic {
       embTabsPasso: [{ id: 'pedal', label: 'Desmontagem do pedal' }, { id: 'buchas', label: 'Buchas do pedal' }, { id: 'altura', label: 'Regulagem de altura' }, { id: 'garfo', label: 'Garfo de embreagem' }, { id: 'comando', label: 'Sistema de comando' }].map((t, _i, _a) => ({ label: t.label, onClick: () => this.setTab('embTab', t.id, _a), style: this.tabStyle(this.state.embTab === t.id) })),
       embTabGarfo: this.state.embTab === 'garfo',
       embTabComando: this.state.embTab === 'comando',
-      embComandoSteps: EMBREAGEM.comandoSteps.map((t, i) => ({ n: i + 1, t })),
+      embComandoSteps: EMBREAGEM.comandoSteps.map((t, i) => ({ n: i + 1, t, hasNav: i === 0, navLabel: i === 0 ? 'Veja como fazer: remover a caixa de câmbio →' : '', onNav: i === 0 ? (() => { this.setState({ transTab: 'remocao' }); this.setView('transmissao'); }) : (() => {}) })),
       embComandoFig: { src: 'uploads/imgz/embreagem-comando-guia.jpg', label: 'Guia do rolamento de desembreagem — a seta indica o orifício de saída de óleo, que deve ficar voltado para baixo (fig. III.10)', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/embreagem-comando-guia.jpg', label: 'Guia do rolamento de desembreagem (orifício de óleo para baixo)' } }) },
       embGarfoSteps: EMBREAGEM.garfoSteps.map((t, i) => ({ n: i + 1, t })),
       embGarfoMontagem: EMBREAGEM.garfoMontagem.map((t, i) => ({ n: i + 1, t })),
@@ -6069,7 +6071,7 @@ class Component extends DCLogic {
       embAlturaSteps: EMBREAGEM.alturaSteps.map((t, i) => ({ n: i + 1, t })),
       embAlturaFig: { src: 'uploads/imgz/embreagem-altura-pedal.jpg', label: 'Regulagem de altura: o pedal de embreagem deve ficar 10 mm mais alto que o de freio', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/embreagem-altura-pedal.jpg', label: 'Regulagem de altura do pedal (Ø = 10 mm)' } }) },
       embTabBuchas: this.state.embTab === 'buchas',
-      embBuchasSteps: EMBREAGEM.buchasSteps.map((t, i) => ({ n: i + 1, t })),
+      embBuchasSteps: EMBREAGEM.buchasSteps.map((t, i) => ({ n: i + 1, t, hasNav: i === 0, navLabel: i === 0 ? 'Veja como fazer: desmontar o pedal →' : '', onNav: i === 0 ? (() => { this.setState({ embTab: 'pedal' }); try { const sc = document.getElementById('embScroll'); if (sc) sc.scrollTop = 0; } catch (e) {} }) : (() => {}) })),
       embBuchasNota: EMBREAGEM.buchasNota,
       embBuchasFig: { src: 'uploads/imgz/embreagem-buchas-pedal.jpg', label: 'Retirada da bucha de borracha do pedal com chave de fenda', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/embreagem-buchas-pedal.jpg', label: 'Buchas do pedal' } }) },
       embPedalSteps: EMBREAGEM.pedalSteps.map((t, i) => ({ n: i + 1, t })),
@@ -6508,6 +6510,7 @@ class Component extends DCLogic {
       goEcuHome: () => this.setView('home'),
       categories, systemCount: allSubs.length, readyCount: allSubs.filter(s => s.ready).length,
       goHome: () => this.setView('home'),
+      goTransRemocao: () => { this.setState({ transTab: 'remocao' }); this.setView('transmissao'); },
       notHome: this.state.view !== 'home' && !!this.state.view,
       goBack: () => this.goBack(),
       hasPrev: !!(this._hist && this._hist.length),

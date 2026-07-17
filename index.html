@@ -67,6 +67,9 @@
    border-top:1px solid var(--line) !important;
    border-bottom:0 !important;
  }
+ [data-procedure-step="true"]:first-child{
+   border-top:0 !important;
+ }
  [data-step-number="true"]{
    display:inline-flex !important;
    align-items:center !important;
@@ -248,6 +251,7 @@
             <button onClick="{{ copyPix }}" style="{{ pixBtnStyle }}" style-hover="border-color:var(--red); color:var(--red);">{{ pixBtnLabel }}</button>
           </div>
         </div>
+
       </div>
 
       <div data-reveal="1" style="margin-top:16px; border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:22px 28px;">
@@ -2825,6 +2829,20 @@
             </div>
           </div>
         </div>
+
+        <sc-for list="{{ suspensaoHomocineticaSecoes }}" as="sec" hint-placeholder-count="3">
+          <div style="margin-top:34px;">
+            <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">{{ sec.kicker }}</div>
+            <h4 style="font-family:var(--cond); font-weight:800; font-size:25px; line-height:1; text-transform:uppercase; margin:0 0 18px; color:var(--ink);">{{ sec.title }}</h4>
+            <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+              <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
+              <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ sec.steps }}" as="st" hint-placeholder-count="10"><div data-procedure-step="true"><span data-step-number="true">{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
+            </div>
+            <div data-manual-grid="true" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:18px; align-items:stretch;">
+              <sc-for list="{{ sec.photos }}" as="ph" hint-placeholder-count="3"><figure onClick="{{ ph.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12); display:flex; flex-direction:column;" style-hover="border-color:var(--red);"><div style="padding:14px; display:flex; align-items:center; justify-content:center; flex:1;"><img src="{{ ph.src }}" alt="{{ ph.cap }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div><figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">{{ ph.n }}</span><span>{{ ph.cap }}</span></figcaption></figure></sc-for>
+            </div>
+          </div>
+        </sc-for>
       </div>
       <div data-section-end="true" aria-hidden="true"></div>
     </div>
@@ -6050,6 +6068,68 @@ class Component extends DCLogic {
       suspensaoSemieixoParts: [
         'Abraçadeira interna', 'Abraçadeira externa', 'Junta homocinética externa', 'Anel-trava', 'Arruela espaçadora', 'Arruela-mola (prato)', 'Coifa da homocinética externa', 'Semieixo', 'Abraçadeira interna', 'Abraçadeira externa', 'Anel-trava', 'Junta homocinética interna', 'Tampa', 'Arruela-mola (prato)', 'Coifa da homocinética interna'
       ].map((t, i) => ({ n: String(i + 1), t })),
+      suspensaoHomocineticaSecoes: (() => {
+        const photos = (items) => items.map(([n, src, cap]) => ({ n, src, cap, onOpen: () => this.setState({ lightbox: { src, label: `Foto ${n} · ${cap}` } }) }));
+        const steps = (items) => items.map((t, i) => ({ n: String(i + 1), t }));
+        return [
+          {
+            kicker: 'Junta do lado da roda', title: 'Homocinética externa',
+            steps: steps([
+              'Retire o semieixo conforme o procedimento acima.',
+              'Retire as abraçadeiras interna e externa e recue a coifa.',
+              'Prenda o semieixo em uma morsa com os mordentes protegidos.',
+              'Saque a junta externa com golpes firmes de martelo de borracha ou plástico, conforme a Foto 3.',
+              'Retire a arruela espaçadora e a arruela-mola.',
+              'Na montagem, instale um anel-trava novo e aplique 90 g de graxa de lítio dentro da junta. Não deixe graxa nas áreas onde a coifa será assentada.',
+              'Posicione a coifa entre os ressaltos do semieixo e da junta externa, conforme a Foto 4.',
+              'Feche a coifa com abraçadeiras novas.'
+            ]),
+            photos: photos([
+              ['3','uploads/imgz/homocinetica-externa-remocao-martelo.png','Saque da junta homocinética externa com martelo de borracha ou plástico.'],
+              ['4','uploads/imgz/homocinetica-externa-posicao-coifa.png','Posição correta da coifa entre os ressaltos do semieixo e da junta externa.']
+            ])
+          },
+          {
+            kicker: 'Junta do lado do câmbio', title: 'Homocinética interna',
+            steps: steps([
+              'Retire o semieixo conforme o procedimento acima.', 'Retire as duas abraçadeiras e recue a coifa.',
+              'Remova a tampa da junta com punção e martelo.', 'Retire o anel-trava, conforme a Foto 5.',
+              'Saque a junta do semieixo.', 'Retire a arruela-mola, a tampa e a coifa. Confira todas as peças e substitua as que apresentarem desgaste ou dano.',
+              'Passe primeiro a coifa nova pelo semieixo e depois instale a tampa, conforme a Foto 6.',
+              'Monte a arruela-mola com o lado côncavo voltado para a junta.', 'Encaixe a junta no semieixo e instale um anel-trava novo.',
+              'Distribua 90 g de graxa de lítio: dois terços dentro da junta e um terço do lado da coifa.',
+              'Com um punção, alinhe os furos da tampa com os furos da junta.', 'Assente a coifa nos ressaltos do semieixo e da tampa.',
+              'Instale abraçadeiras novas. A saliência do fechamento não pode ficar alinhada com os furos dos parafusos de doze pontas.',
+              'Confira a posição final da coifa e das abraçadeiras, conforme a Foto 7.', 'Reinstale o semieixo.'
+            ]),
+            photos: photos([
+              ['5','uploads/imgz/homocinetica-interna-remocao-anel-trava.png','Remoção do anel-trava da junta homocinética interna.'],
+              ['6','uploads/imgz/homocinetica-interna-coifa-tampa.png','Ordem de montagem da coifa e da tampa no semieixo.'],
+              ['7','uploads/imgz/homocinetica-interna-montagem-final.png','Posição final da coifa e das abraçadeiras.']
+            ])
+          },
+          {
+            kicker: 'Desmontagem e conferência', title: 'Inspeção da junta',
+            steps: steps([
+              'Gire o cubo e a gaiola de esferas até que saiam parcialmente por um dos lados da junta, conforme a Foto 8.',
+              'Retire as esferas da gaiola. Incline o cubo e retire-o pelo lado chanfrado da gaiola, conforme a Foto 9.',
+              'Lave e examine pistas, esferas, cubo e gaiola. Se qualquer peça estiver danificada, substitua a junta completa.',
+              'Para montar, introduza o cubo na gaiola por dois dos chanfros e recoloque as esferas.',
+              'Posicione o lado chanfrado do cubo voltado para o colar de apoio do semieixo. Alinhe a pista larga da junta com a pista estreita do cubo no mesmo lado, conforme a Foto 10.',
+              'Incline o conjunto e introduza cubo, gaiola e esferas na junta, mantendo as esferas espaçadas de acordo com o cruzamento das pistas, conforme a Foto 11.',
+              'Aperte a gaiola com firmeza e assente totalmente o conjunto na junta, conforme a Foto 12.',
+              'Confira o movimento: cubo, gaiola e esferas devem correr livremente pelas pistas. Depois, monte a junta e reinstale o semieixo.'
+            ]),
+            photos: photos([
+              ['8','uploads/imgz/homocinetica-inspecao-girar-cubo.png','Giro do cubo e da gaiola para iniciar a desmontagem.'],
+              ['9','uploads/imgz/homocinetica-inspecao-retirar-cubo.png','Retirada do cubo pelo lado chanfrado da gaiola.'],
+              ['10','uploads/imgz/homocinetica-inspecao-pistas-a-b.png','Alinhamento da pista larga com a pista estreita no mesmo lado.'],
+              ['11','uploads/imgz/homocinetica-inspecao-inserir-conjunto.png','Entrada inclinada do cubo, da gaiola e das esferas na junta.'],
+              ['12','uploads/imgz/homocinetica-inspecao-teste-final.png','Assentamento do conjunto e conferência do movimento da junta.']
+            ])
+          }
+        ];
+      })(),
       suspensaoRolamentoSteps: [
         'Retire a coluna com a manga de eixo conforme o procedimento da subaba Manga de eixo.',
         'Retire o disco de freio.',

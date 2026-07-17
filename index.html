@@ -129,7 +129,9 @@
    [data-sapatas-figs]{ grid-template-columns:1fr !important; }
    [data-section-end]{ margin-top:36px; padding-bottom:20px; }
    [id$="Scroll"] sc-for[data-procedure="true"] > div{ gap:13px !important; padding:13px 16px !important; }
-   [data-manual-nav]::after{ content:'↔ deslize para trocar de aba'; font-family:var(--mono); font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-top:1px; }
+ }
+ @media (hover:none), (pointer:coarse){
+   [data-manual-nav]::after{ content:'↔ deslize para trocar de aba'; display:block; flex:0 0 100%; width:100%; font-family:var(--mono); font-size:9px; letter-spacing:.08em; line-height:1.35; text-transform:uppercase; color:var(--faint); margin-top:4px; }
  }
 
 </style>
@@ -519,7 +521,7 @@
       </button>
     </div>
 
-    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:32px; padding-bottom:22px; border-bottom:1px solid var(--line);">
+    <div data-manual-nav="true" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:32px; padding-bottom:22px; border-bottom:1px solid var(--line);">
       <sc-for list="{{ ecuTabs }}" as="tab" hint-placeholder-count="6">
         <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
       </sc-for>
@@ -928,7 +930,7 @@
       </button>
     </div>
 
-    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px; padding-bottom:22px; border-bottom:1px solid var(--line);">
+    <div data-manual-nav="true" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:30px; padding-bottom:22px; border-bottom:1px solid var(--line);">
       <sc-for list="{{ painelTabs }}" as="tab" hint-placeholder-count="5">
         <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
       </sc-for>
@@ -1362,7 +1364,7 @@
       <figcaption style="font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); padding:10px 16px; border-top:1px solid var(--line); background:var(--panel);">Vista geral do escapamento — coletor, tubo dianteiro c/ catalisador, silenciosos e defletores · clique para ampliar</figcaption>
     </figure>
 
-    <div id="escapeTabsBar" style="display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
+    <div id="escapeTabsBar" data-manual-nav="true" style="display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
       <sc-for list="{{ escapeTabs }}" as="f" hint-placeholder-count="4">
         <button onClick="{{ f.onSelect }}" style="{{ f.tabStyle }}">
           <div style="{{ f.numStyle }}">Etapa {{ f.num }}</div>
@@ -2650,7 +2652,7 @@
 
     <div style="font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--ink); max-width:80ch; margin:0 0 22px;">O sistema elétrico do Gol 95 2.0i compreende: <strong>alternador</strong>, motor de arranque, central de distribuição elétrica, relés, conectores, fusíveis e chicotes — além de painel de instrumentos, velocímetro, limpadores, sistema de áudio e luzes. Este guia cobre o alternador: fixação, tensionamento da correia e serviços.</div>
 
-    <div id="altTabsBar" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; padding-bottom:20px; border-bottom:1px solid var(--line);">
+    <div id="altTabsBar" data-manual-nav="true" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px; padding-bottom:20px; border-bottom:1px solid var(--line);">
       <sc-for list="{{ altTabs }}" as="tab" hint-placeholder-count="3">
         <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
       </sc-for>
@@ -2818,7 +2820,7 @@
       </button>
     </div>
 
-    <div id="motorTabsBar" style="margin-bottom:26px; padding-bottom:22px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:16px;">
+    <div id="motorTabsBar" data-manual-nav="true" style="margin-bottom:26px; padding-bottom:22px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:16px;">
       <div style="display:flex; flex-direction:column; gap:9px;">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint);">Visão geral</div>
         <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -3364,7 +3366,7 @@
       </sc-for>
     </div>
 
-    <div id="ignTabsBar" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; padding-bottom:22px; border-bottom:1px solid var(--line);">
+    <div id="ignTabsBar" data-manual-nav="true" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; padding-bottom:22px; border-bottom:1px solid var(--line);">
       <sc-for list="{{ ignTabs }}" as="tab" hint-placeholder-count="3">
         <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
       </sc-for>
@@ -5356,6 +5358,7 @@ class Component extends DCLogic {
     if (v === 'ignicao') return move('ignTab', ['proc','testes'], x => this.setIgnTab(x));
     if (v === 'alternador') return move('altTab', ['fix','k1','k90','upgrade']);
     if (v === 'motor') return move('motorTab', ['bloco','desmont','desarme']);
+    if (v === 'escape') return move('escapeTab', [0,1,2,3], x => this.setEscapeTab(x));
     if (v === 'home') return move('homeTab', ['indice','revisoes']);
   }
 

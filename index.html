@@ -2425,7 +2425,6 @@
           </div>
         </div>
       </div>
-
       <div data-reveal="1" style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Cilindro-mestre</div>
         <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Regulagem da <span style="color:var(--red);">haste de acionamento</span></h3>
@@ -2581,7 +2580,7 @@
     <div data-manual-nav="true" style="margin-bottom:30px; padding-bottom:22px; border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:9px;">
       <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--faint);">Capítulos da suspensão</div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <sc-for list="{{ suspensaoTabs }}" as="tab" hint-placeholder-count="3"><button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button></sc-for>
+        <sc-for list="{{ suspensaoTabs }}" as="tab" hint-placeholder-count="5"><button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button></sc-for>
       </div>
     </div>
 
@@ -2619,8 +2618,13 @@
           </div>
         </div>
       </div>
+      <div data-section-end="true" aria-hidden="true"></div>
+    </div>
+    </sc-if>
 
-      <div data-reveal="1" style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+    <sc-if value="{{ suspTabAmortecedor }}">
+    <div data-pageturn="1">
+      <div data-reveal="1">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Amortecedor</div>
         <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Início da <span style="color:var(--red);">remoção</span></h3>
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
@@ -2630,12 +2634,17 @@
           </div>
           <figure onClick="{{ suspensaoAmortecedorFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoAmortecedorFig.src }}" alt="{{ suspensaoAmortecedorFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
-            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">2</span><span>Afrouxamento da bucha roscada com as ferramentas VW 150, VW 001V, VW 5156/1 e CP-58</span></figcaption>
+            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">1</span><span>Afrouxamento da bucha roscada com as ferramentas VW 150, VW 001V, VW 5156/1 e CP-58</span></figcaption>
           </figure>
         </div>
       </div>
+      <div data-section-end="true" aria-hidden="true"></div>
+    </div>
+    </sc-if>
 
-      <div data-reveal="1" style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+    <sc-if value="{{ suspTabColuna }}">
+    <div data-pageturn="1">
+      <div data-reveal="1">
         <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Manga de eixo</div>
         <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Suporte da <span style="color:var(--red);">coluna de suspensão</span></h3>
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
@@ -2645,7 +2654,7 @@
           </div>
           <figure onClick="{{ suspensaoColunaFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoColunaFig.src }}" alt="{{ suspensaoColunaFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
-            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">3</span><span>Desencaixe do pivô da suspensão com o extrator VW 047Z</span></figcaption>
+            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">1</span><span>Desencaixe do pivô da suspensão com o extrator VW 047Z</span></figcaption>
           </figure>
         </div>
         <div style="margin-top:14px; padding:14px 18px; border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); font-family:var(--sans); font-size:12.8px; line-height:1.5; color:var(--ink);"><strong>Atenção:</strong> apoie a pinça de freio na carroceria ou na suspensão. Não deixe a pinça pendurada pelo flexível.</div>
@@ -5383,7 +5392,7 @@ class Component extends DCLogic {
     if (v === 'transmissao') return move('transTab', ['cambio','eixoprim','eixopinhao','diferencial','alavanca','coxim','remocao','seletora','abertura','eixosdesm','montagem','monteixo','montpinhao','coroapinhao','carcaca'], x => this.setTransTab(x));
     if (v === 'embreagem') return move('embTab', ['geral','pedal','buchas','altura','garfo','comando']);
     if (v === 'freios') return move('freiosTab', ['pastilhas','traseiros','pedal','freiodemao']);
-    if (v === 'suspensao') return move('suspTab', ['geral','dianteira','traseira']);
+    if (v === 'suspensao') return move('suspTab', ['geral','dianteira','amortecedor','coluna','traseira']);
     if (v === 'ecu') return move('ecuTab', ['visao','codigos','sensores','medidas','quarterhorse','ometer','modulos','alimentacao'], x => this.setEcuTab(x));
     if (v === 'painel') return move('painelTab', ['visao','instrumentos','computador','espias','eletrica','codigos','afericao'], x => this.setPainelTab(x));
     if (v === 'ignicao') return move('ignTab', ['proc','testes'], x => this.setIgnTab(x));
@@ -5751,13 +5760,17 @@ class Component extends DCLogic {
       isSuspensao: this.state.view === 'suspensao',
       suspensaoTabs: [
         { id: 'geral', label: 'Visão geral' },
-        { id: 'dianteira', label: 'Suspensão dianteira' },
+        { id: 'dianteira', label: 'Conjunto dianteiro' },
+        { id: 'amortecedor', label: 'Amortecedor' },
+        { id: 'coluna', label: 'Suporte da coluna' },
         { id: 'traseira', label: 'Suspensão traseira' }
       ].map((t, _i, _a) => ({ label: t.label, onClick: () => { this.setTab('suspTab', t.id, _a); try { const sc = document.getElementById('suspScroll'); if (sc) sc.scrollTop = 0; } catch (e) {} }, style: this.tabStyle((this.state.suspTab || 'geral') === t.id) })),
       suspTabGeral: (this.state.suspTab || 'geral') === 'geral',
       suspTabDianteira: this.state.suspTab === 'dianteira',
+      suspTabAmortecedor: this.state.suspTab === 'amortecedor',
+      suspTabColuna: this.state.suspTab === 'coluna',
       suspTabTraseira: this.state.suspTab === 'traseira',
-      suspensaoBreadcrumb: ({ geral: 'Visão geral', dianteira: 'Suspensão dianteira', traseira: 'Suspensão traseira' })[this.state.suspTab || 'geral'],
+      suspensaoBreadcrumb: ({ geral: 'Visão geral', dianteira: 'Conjunto dianteiro', amortecedor: 'Amortecedor', coluna: 'Suporte da coluna', traseira: 'Suspensão traseira' })[this.state.suspTab || 'geral'],
       suspensaoGeralFig: { src: 'uploads/imgz/suspensao-visao-geral-entre-eixos.png', label: 'Alteração geométrica da suspensão — eixo dianteiro 40 mm à frente, eixo traseiro 70 mm atrás e entre-eixos de 2.468 mm', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-visao-geral-entre-eixos.png', label: 'Suspensão — alteração geométrica e entre-eixos de 2.468 mm' } }) },
       suspensaoDianteiraFig: { src: 'uploads/imgz/suspensao-dianteira-conjunto.png', label: 'Conjunto completo da suspensão dianteira — peças numeradas de 1 a 29 e torques de aperto', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-conjunto.png', label: 'Suspensão dianteira — conjunto completo, peças 1 a 29' } }) },
       suspensaoDianteiraParts: [
@@ -5766,7 +5779,7 @@ class Component extends DCLogic {
       suspensaoAmortecedorSteps: [
         'Retire a roda.',
         'Retire a porca que prende o suporte superior da coluna de suspensão à carroceria.',
-        'Afrouxe algumas voltas a bucha roscada usando as ferramentas indicadas na Foto 2.',
+        'Afrouxe algumas voltas a bucha roscada usando as ferramentas indicadas na Foto 1.',
         'Solte a barra de direção do suporte da coluna de suspensão.',
         'Comprima a mola helicoidal e retire a bucha roscada.',
         'Retire o coxim superior da coluna de suspensão e o prato superior da mola.',
@@ -5775,17 +5788,17 @@ class Component extends DCLogic {
         'Retire o amortecedor e verifique seu estado.',
         'Na montagem, aperte os parafusos da roda a 100 Nm.'
       ].map((t, i) => ({ n: String(i + 1), t })),
-      suspensaoAmortecedorFig: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Afrouxamento da bucha roscada da coluna de suspensão com VW 150, VW 001V, VW 5156/1 e CP-58', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Foto 2 · Amortecedor — afrouxamento da bucha roscada' } }) },
+      suspensaoAmortecedorFig: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Afrouxamento da bucha roscada da coluna de suspensão com VW 150, VW 001V, VW 5156/1 e CP-58', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Foto 1 · Amortecedor — afrouxamento da bucha roscada' } }) },
       suspensaoColunaSteps: [
         'Afrouxe a porca do cubo da roda.',
         'Retire a roda.',
         'Retire a pinça de freio e deixe-a apoiada adequadamente, sem forçar o flexível.',
         'Solte o terminal da barra de direção do suporte da coluna de suspensão.',
         'Retire o parafuso que prende o pivô da suspensão ao suporte da coluna.',
-        'Desencaixe o pivô da suspensão com uma alavanca ou com o extrator VW 047Z mostrado na Foto 3.',
+        'Desencaixe o pivô da suspensão com uma alavanca ou com o extrator VW 047Z mostrado na Foto 1.',
         'Retire a porca do suporte superior da coluna na carroceria e saque o conjunto da coluna.'
       ].map((t, i) => ({ n: String(i + 1), t })),
-      suspensaoColunaFig: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Desencaixe do pivô da suspensão no suporte da coluna com o extrator VW 047Z', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Foto 3 · Suporte da coluna — extrator VW 047Z' } }) },
+      suspensaoColunaFig: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Desencaixe do pivô da suspensão no suporte da coluna com o extrator VW 047Z', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Foto 1 · Suporte da coluna — extrator VW 047Z' } }) },
       freiosTabsAll: (() => {
         const rodas = [
           { id: 'pastilhas', label: 'Freios dianteiros' },

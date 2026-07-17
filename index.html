@@ -2634,6 +2634,22 @@
           </figure>
         </div>
       </div>
+
+      <div data-reveal="1" style="margin-top:42px; padding-top:28px; border-top:1px solid var(--line);">
+        <div style="font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--red); margin-bottom:7px;">Manga de eixo</div>
+        <h3 style="font-family:var(--cond); font-weight:800; font-size:27px; line-height:1; text-transform:uppercase; margin:0 0 20px; color:var(--ink);">Suporte da <span style="color:var(--red);">coluna de suspensão</span></h3>
+        <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
+          <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
+            <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
+            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoColunaSteps }}" as="st" hint-placeholder-count="7"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
+          </div>
+          <figure onClick="{{ suspensaoColunaFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+            <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoColunaFig.src }}" alt="{{ suspensaoColunaFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+            <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">3</span><span>Desencaixe do pivô da suspensão com o extrator VW 047Z</span></figcaption>
+          </figure>
+        </div>
+        <div style="margin-top:14px; padding:14px 18px; border:1px solid var(--red); border-radius:14px; background:color-mix(in srgb,var(--red) 8%,var(--panel)); font-family:var(--sans); font-size:12.8px; line-height:1.5; color:var(--ink);"><strong>Atenção:</strong> apoie a pinça de freio na carroceria ou na suspensão. Não deixe a pinça pendurada pelo flexível.</div>
+      </div>
       <div data-section-end="true" aria-hidden="true"></div>
     </div>
     </sc-if>
@@ -5760,6 +5776,16 @@ class Component extends DCLogic {
         'Na montagem, aperte os parafusos da roda a 100 Nm.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       suspensaoAmortecedorFig: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Afrouxamento da bucha roscada da coluna de suspensão com VW 150, VW 001V, VW 5156/1 e CP-58', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Foto 2 · Amortecedor — afrouxamento da bucha roscada' } }) },
+      suspensaoColunaSteps: [
+        'Afrouxe a porca do cubo da roda.',
+        'Retire a roda.',
+        'Retire a pinça de freio e deixe-a apoiada adequadamente, sem forçar o flexível.',
+        'Solte o terminal da barra de direção do suporte da coluna de suspensão.',
+        'Retire o parafuso que prende o pivô da suspensão ao suporte da coluna.',
+        'Desencaixe o pivô da suspensão com uma alavanca ou com o extrator VW 047Z mostrado na Foto 3.',
+        'Retire a porca do suporte superior da coluna na carroceria e saque o conjunto da coluna.'
+      ].map((t, i) => ({ n: String(i + 1), t })),
+      suspensaoColunaFig: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Desencaixe do pivô da suspensão no suporte da coluna com o extrator VW 047Z', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-soltar-pivo-vw047z.png', label: 'Foto 3 · Suporte da coluna — extrator VW 047Z' } }) },
       freiosTabsAll: (() => {
         const rodas = [
           { id: 'pastilhas', label: 'Freios dianteiros' },

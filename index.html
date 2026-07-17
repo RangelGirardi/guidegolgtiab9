@@ -2639,13 +2639,17 @@
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
             <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoAmortecedorSteps }}" as="st" hint-placeholder-count="3"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoAmortecedorSteps }}" as="st" hint-placeholder-count="10"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
           </div>
           <figure onClick="{{ suspensaoAmortecedorFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoAmortecedorFig.src }}" alt="{{ suspensaoAmortecedorFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
             <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">1</span><span>Afrouxamento da porca superior da haste com as ferramentas VW 150, VW 001V, VW 5156/1 e CP-58</span></figcaption>
           </figure>
         </div>
+        <figure onClick="{{ suspensaoAmortecedorFig2.onOpen }}" style="margin:20px 0 0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+          <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoAmortecedorFig2.src }}" alt="{{ suspensaoAmortecedorFig2.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+          <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">2</span><span>Mola comprimida com o encolhedor VW 5340 antes de desmontar o coxim superior</span></figcaption>
+        </figure>
       </div>
       <div data-section-end="true" aria-hidden="true"></div>
     </div>
@@ -5822,7 +5826,7 @@ class Component extends DCLogic {
         'Solte a porca do coxim superior do amortecedor na torre.',
         'Afrouxe algumas voltas a porca superior da haste com as ferramentas indicadas na Foto 1.',
         'Solte o terminal de direção da manga de eixo.',
-        'Comprima a mola com um encolhedor e retire a porca superior da haste.',
+        'Comprima a mola com o encolhedor VW 5340 mostrado na Foto 2 e retire a porca superior da haste.',
         'Retire o coxim superior e o prato superior da mola.',
         'Retire o batente junto com a coifa do amortecedor.',
         'Solte a porca de fixação do cartucho dentro da coluna.',
@@ -5830,6 +5834,7 @@ class Component extends DCLogic {
         'Na montagem, aperte os parafusos da roda a 100 Nm.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       suspensaoAmortecedorFig: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Afrouxamento da porca superior da haste do amortecedor com VW 150, VW 001V, VW 5156/1 e CP-58', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-soltar-bucha.png', label: 'Foto 1 · Amortecedor — porca superior da haste' } }) },
+      suspensaoAmortecedorFig2: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-encolhedor-vw5340.png', label: 'Mola da suspensão dianteira comprimida com o encolhedor VW 5340', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-amortecedor-encolhedor-vw5340.png', label: 'Foto 2 · Amortecedor — encolhedor de mola VW 5340' } }) },
       suspensaoColunaSteps: [
         'Afrouxe a porca do cubo da roda.',
         'Retire a roda.',

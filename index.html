@@ -2678,13 +2678,17 @@
         <div data-freios-grid="true" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.8fr); gap:20px; align-items:start;">
           <div style="border:1px solid var(--line); border-radius:16px; background:var(--panel); overflow:hidden;">
             <div style="padding:14px 18px; border-bottom:1px solid var(--line); font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--red);">Passo a passo</div>
-            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoRolamentoSteps }}" as="st" hint-placeholder-count="5"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
+            <div style="padding:8px 20px 14px;"><sc-for data-procedure="true" list="{{ suspensaoRolamentoSteps }}" as="st" hint-placeholder-count="13"><div style="display:grid; grid-template-columns:24px 1fr; gap:10px; align-items:start; padding:10px 0; border-bottom:1px solid var(--line);"><span>{{ st.n }}</span><span>{{ st.t }}</span></div></sc-for></div>
           </div>
           <figure onClick="{{ suspensaoRolamentoFig.onOpen }}" style="margin:0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
             <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoRolamentoFig.src }}" alt="{{ suspensaoRolamentoFig.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
             <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">1</span><span>Extração da pista interna do rolamento do cubo com as ferramentas VW 295A e VW 045Z</span></figcaption>
           </figure>
         </div>
+        <figure onClick="{{ suspensaoRolamentoFig2.onOpen }}" style="margin:20px 0 0; border:1px solid var(--line); border-radius:16px; overflow:hidden; background:#fff; cursor:zoom-in; box-shadow:0 10px 26px rgba(0,0,0,.12);" style-hover="border-color:var(--red);">
+          <div style="padding:14px; display:flex; align-items:center; justify-content:center;"><img src="{{ suspensaoRolamentoFig2.src }}" alt="{{ suspensaoRolamentoFig2.label }}" loading="lazy" style="max-width:100%; height:auto; display:block;" /></div>
+          <figcaption style="display:flex; align-items:flex-start; gap:8px; font-family:var(--sans); font-size:11.5px; line-height:1.4; color:var(--ink); padding:10px 12px;"><span style="display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; width:18px; height:18px; border-radius:999px; background:var(--red); color:#fff; font-family:var(--cond); font-weight:800; font-size:11px;">2</span><span>Instalação do rolamento novo na prensa com as ferramentas VW 412, VW 066, VW 5668 e VW 402</span></figcaption>
+        </figure>
       </div>
       <div data-section-end="true" aria-hidden="true"></div>
     </div>
@@ -5839,9 +5843,18 @@ class Component extends DCLogic {
         'Retire o disco de freio.',
         'Retire o protetor do disco.',
         'Saque o cubo da roda.',
-        'Remova do cubo a pista interna do rolamento usando as ferramentas mostradas na Foto 1.'
+        'Remova do cubo a pista interna do rolamento usando as ferramentas mostradas na Foto 1.',
+        'Retire a pista externa do rolamento.',
+        'Lubrifique o alojamento do rolamento com pasta lubrificante branca.',
+        'Instale o anel-trava externo.',
+        'Prense o rolamento novo no alojamento usando as ferramentas mostradas na Foto 2.',
+        'Instale o anel-trava interno.',
+        'Prense o cubo da roda no rolamento.',
+        'Instale o protetor do disco e o disco de freio.',
+        'Reinstale o suporte da coluna de suspensão.'
       ].map((t, i) => ({ n: String(i + 1), t })),
       suspensaoRolamentoFig: { src: 'uploads/imgz/suspensao-dianteira-rolamento-cubo-vw295a-045z.png', label: 'Extração da pista interna do rolamento do cubo com as ferramentas VW 295A e VW 045Z', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-rolamento-cubo-vw295a-045z.png', label: 'Foto 1 · Rolamento da roda — extração da pista interna' } }) },
+      suspensaoRolamentoFig2: { src: 'uploads/imgz/suspensao-dianteira-rolamento-prensa-vw412-066-5668-402.png', label: 'Instalação do rolamento novo na prensa com as ferramentas VW 412, VW 066, VW 5668 e VW 402', onOpen: () => this.setState({ lightbox: { src: 'uploads/imgz/suspensao-dianteira-rolamento-prensa-vw412-066-5668-402.png', label: 'Foto 2 · Rolamento da roda — instalação na prensa' } }) },
       freiosTabsAll: (() => {
         const rodas = [
           { id: 'pastilhas', label: 'Freios dianteiros' },
